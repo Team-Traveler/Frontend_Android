@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         val view=binding.root
         setContentView(view)
 
-
         //추가 시작
         val adapter=MyAdapter(list)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
