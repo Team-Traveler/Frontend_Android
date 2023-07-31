@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/up2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/linear2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="184dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/up2"
+        app:layout_constraintStart_toEndOf="@id/up2"
+        app:layout_constraintTop_toBottomOf="@+id/up2">
+
+        <LinearLayout
+            android:id="@+id/up"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="1dp"
+                android:text="Make My Travel"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/self"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="69dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="317dp"
+                android:text="여행 계획 만들기"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="@id/textView"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_layout"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/course"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:text="여행 코스 이름"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/up"
+                app:layout_constraintTop_toTopOf="@id/up"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/coursetext"
+                android:layout_width="279dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="124dp"
+                android:hint="여행의 이름을 입력하세요"
+                tools:ignore="MissingConstraints" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_layout"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:text="어디로 여행가시나요?"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/up"
+                app:layout_constraintTop_toTopOf="@id/up"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/placetext"
+                android:layout_width="279dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="124dp"
+                android:hint="여행할 장소를 입력하세요"
+                tools:ignore="MissingConstraints" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_layout"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/when"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:text="언제?"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintStart_toStartOf="@id/up"
+                app:layout_constraintTop_toTopOf="@id/up"
+                tools:ignore="MissingConstraints" />
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TableRow>
+
+
+                    <TextView
+                        android:id="@+id/depart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="출발"
+                        android:textColor="#aaa"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/departday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="날짜"
+                        android:textColor="#aaa"
+                        tools:ignore="MissingConstraints" />
+
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/arrive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="도착"
+                        android:textColor="#aaa"
+                        tools:ignore="MissingConstraints" />
+                    <TextView
+                        android:id="@+id/arriveday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="날짜"
+                        android:textColor="#aaa"
+                        tools:ignore="MissingConstraints" />
+
+                </TableRow>
+
+
+
+            </TableLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/button"
+        android:layout_width="210dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/button"
+        android:text="여행 계획 만들기"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/linear2"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@id/linear2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
