@@ -1,13 +1,9 @@
 package com.example.traveler
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemRecyclerBinding
-import android.content.Context
 
 class MyAdapter(private val items: ArrayList<Contents>) :
 RecyclerView.Adapter<MyAdapter.ViewHolder>() {
@@ -50,7 +46,7 @@ RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     }
 
     // 외부에서 아이템 클릭 리스너 설정
-    fun setOnItemClickListener(listener: MainActivity) {
+    fun setOnItemClickListener(listener: MyTripActivity) {
         itemClickListener = listener
     }
 

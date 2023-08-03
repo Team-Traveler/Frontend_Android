@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.traveler.databinding.ActivityMainBinding
+import com.example.traveler.databinding.ActivityMytripBinding
 
 
-class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
+class MyTripActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMytripBinding
     private  val list = ArrayList<Contents>()
     val REQUEST_CODE = 100
     val adapter=MyAdapter(list)
@@ -19,10 +20,14 @@ class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater);
+        binding = ActivityMytripBinding.inflate(layoutInflater);
 
         val view=binding.root
         setContentView(view)
+
+        // 커스텀 액션 바 레이아웃 인플레이트
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.custom_action_bar)
 
         //추가 시작
         adapter.setOnItemClickListener(this)
@@ -36,7 +41,7 @@ class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
          var fab=binding.fab
         fab.setOnClickListener {
             // SecondActity 화면으로 이동하게 Intent 사용
-            val myIntent = Intent(this, SecondActivity::class.java)
+            val myIntent = Intent(this, MakeActivity::class.java)
 
             startActivityForResult(myIntent,REQUEST_CODE)
 
