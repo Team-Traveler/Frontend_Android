@@ -1,23 +1,18 @@
 package com.example.traveler
 
 import android.app.DatePickerDialog
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.traveler.databinding.ActivitySecondBinding
+import com.example.traveler.databinding.ActivityMakeBinding
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
-class SecondActivity : AppCompatActivity() {
+class MakeActivity : AppCompatActivity() {
     private val REQUEST_CODE=100
 
-    val binding by lazy {ActivitySecondBinding.inflate(layoutInflater)}
+    val binding by lazy {ActivityMakeBinding.inflate(layoutInflater)}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -107,13 +102,9 @@ class SecondActivity : AppCompatActivity() {
 
 
 
-//        val resultIntent=Intent()
         setResult(RESULT_OK,resulIntent)
         finish()
-        //getResultText.launch(intent)
-        //setResult(RESULT_OK,intent)
-        //finish()
-        //startActivity(intent)
+
     }
 
 
