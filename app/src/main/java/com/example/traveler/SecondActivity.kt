@@ -107,13 +107,9 @@ class SecondActivity : AppCompatActivity() {
 
 
 
-//        val resultIntent=Intent()
         setResult(RESULT_OK,resulIntent)
         finish()
-        //getResultText.launch(intent)
-        //setResult(RESULT_OK,intent)
-        //finish()
-        //startActivity(intent)
+
     }
 
 

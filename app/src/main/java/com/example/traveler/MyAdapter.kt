@@ -1,39 +1,56 @@
 package com.example.traveler
 
-
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemRecyclerBinding
-
-//리사이클러뷰
+import android.content.Context
 
 class MyAdapter(private val items: ArrayList<Contents>) :
-    RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     private var itemClickListener: OnItemClickListener? = null
 
+    inner class ViewHolder(val binding: ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            //text 클릭 시, 이벤트 처리 코드 추가
+            //클릭 이벤트 발새 시, onitemclicklistener 호출해
+            //해당 아이템의 위치 전달
+            binding.detail.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    itemClickListener?.onItemClick(position)
 
 
-    class ViewHolder(val binding: ItemRecyclerBinding):RecyclerView.ViewHolder(binding.root)
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view=LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_recycler,parent,false)
-        return ViewHolder(ItemRecyclerBinding.bind(view))
-
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemRecyclerBinding.inflate(inflater, parent, false)
+        return ViewHolder(binding)
     }
-    override fun onBindViewHolder(viewHolder: ViewHolder,position:Int){
-        viewHolder.binding.textView.text=items[position].name
-        viewHolder.binding.day.text=items[position].day
-        viewHolder.binding.date.text=items[position].date
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        holder.binding.textView.text = item.name
+        holder.binding.day.text = item.day
+        holder.binding.date.text = item.date
     }
 
     override fun getItemCount(): Int = items.size
 
+    // 아이템을 얻을 수 있는 getItem 함수 추가
+    fun getItem(position: Int): Contents {
+        return items[position]
+    }
+
     // 외부에서 아이템 클릭 리스너 설정
-    fun setOnItemClickListener(listener: OnItemClickListener) {
+    fun setOnItemClickListener(listener: MainActivity) {
         itemClickListener = listener
     }
 
@@ -41,9 +58,4 @@ class MyAdapter(private val items: ArrayList<Contents>) :
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
-
-
-
-
-
 }

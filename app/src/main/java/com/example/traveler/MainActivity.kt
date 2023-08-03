@@ -1,25 +1,20 @@
 package com.example.traveler
 
-import android.app.Activity
 import android.content.Intent
-import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private  val list = ArrayList<Contents>()
     val REQUEST_CODE = 100
+    val adapter=MyAdapter(list)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,20 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         //추가 시작
-        val adapter=MyAdapter(list)
+        adapter.setOnItemClickListener(this)
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = MyAdapter(list)
+        binding.recyclerView.adapter = adapter
 
-
-        // 리사이클러뷰 아이템 클릭 이벤트 처리
-        adapter.setOnItemClickListener(object : MyAdapter.OnItemClickListener {
-            override fun onItemClick(position: Int) {
-                // 아이템을 클릭했을 때 실행될 동작을 여기에 구현
-                val intent = Intent(this@MainActivity, DetailActivity::class.java)
-               // intent.putExtra("item_data", list[position])
-                startActivityForResult(intent, REQUEST_CODE)
-            }
-        })
 
 
         // 플로팅 버튼 클릭시 에니메이션 동작 기능
@@ -56,6 +42,15 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+        //[프로필 편집] 클릭
+        binding.editProfile.setOnClickListener {
+            //editProfile 로 이동
+            val myIntent = Intent(this, EditProfile::class.java)
+            startActivity(myIntent)
+
+
+        }
 
         }
 
@@ -83,7 +78,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onItemClick(position: Int) {
+        // Handle text click event here
+        val selectedItem = adapter.getItem(position)
+        Toast.makeText(this, "Clicked on: ${selectedItem.name}", Toast.LENGTH_SHORT).show()
 
+        // 예를 들면, 새로운 액티비티로 이동하려면 아래와 같이 코드를 작성할 수 있습니다.
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("selectedItemName", selectedItem.name)
+        startActivity(intent)
+    }
 
 
 }
