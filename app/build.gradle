@@ -48,7 +48,10 @@ dependencies {
 
     // 카카오 로그인 모듈
     implementation "com.kakao.sdk:v2-user:2.10.0"
-    //implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.27.0'
+
+    //네비게이션바 만들기
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

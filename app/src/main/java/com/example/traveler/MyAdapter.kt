@@ -46,7 +46,7 @@ RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     }
 
     // 외부에서 아이템 클릭 리스너 설정
-    fun setOnItemClickListener(listener: MyTripActivity) {
+    fun setOnItemClickListener(listener: MyTravelActivity) {
         itemClickListener = listener
     }
 

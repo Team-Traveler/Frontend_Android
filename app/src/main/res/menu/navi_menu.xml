@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/airplane"
+        android:title="여행추천"
+        android:icon="@drawable/airplane"/>
+    <item
+        android:id="@+id/story"
+        android:title="스토리"
+        android:icon="@drawable/book"/>
+    <item
+        android:id="@+id/notepad"
+        android:title="나의노트"
+        android:icon="@drawable/notepad"/>
+    <item
+        android:id="@+id/my_travel"
+        android:title="나의여행"
+        android:icon="@drawable/account_outline"/>
+</menu>
