@@ -11,16 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.databinding.ActivityMytripBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MyTravelFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener {
 
     private val list = ArrayList<Contents>()
@@ -90,7 +80,6 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener {
         }
     }
     override fun onItemClick(position: Int) {
-        TODO("Not yet implemented")
     }
 
 }
