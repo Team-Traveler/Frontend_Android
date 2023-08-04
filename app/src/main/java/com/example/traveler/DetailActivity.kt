@@ -3,6 +3,7 @@ package com.example.traveler
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.databinding.ActivityDetailBinding
 
@@ -15,6 +16,11 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        // 커스텀 액션 바 레이아웃 인플레이트
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.custom_back_bar)
 
         // 부모 리사이클러뷰 설정
         parentAdapter = ParentAdapter(parentDataList)

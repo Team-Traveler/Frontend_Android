@@ -1,5 +1,6 @@
 package com.example.traveler
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,9 @@ class MyTravelActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
     private lateinit var binding: ActivityMytripBinding
     private  val list = ArrayList<Contents>()
     val REQUEST_CODE = 100
+    private val SECOND_ACTIVITY_REQUEST_CODE = 2
+
+
     val adapter=MyAdapter(list)
 
 
@@ -25,9 +29,12 @@ class MyTravelActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
         val view=binding.root
         setContentView(view)
 
+
         // 커스텀 액션 바 레이아웃 인플레이트
         supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar?.setCustomView(R.layout.custom_action_bar)
+
+
 
         //추가 시작
         adapter.setOnItemClickListener(this)
@@ -52,7 +59,8 @@ class MyTravelActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
         binding.editProfile.setOnClickListener {
             //editProfile 로 이동
             val myIntent = Intent(this, EditProfile::class.java)
-            startActivity(myIntent)
+            startActivityForResult(myIntent,SECOND_ACTIVITY_REQUEST_CODE)
+
 
 
         }
@@ -64,6 +72,7 @@ class MyTravelActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
     // 다음 액티비티로부터 결과를 받기 위한 콜백 메서드
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        //생성화면에서 전달받음
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             // 결과 처리
             // 받아온 데이터를 처리하는 로직 작성
@@ -81,6 +90,16 @@ class MyTravelActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
             binding.recyclerView.adapter?.notifyItemInserted((list.size -1))
 
         }
+        else if (requestCode == SECOND_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+
+                // SecondActivity에서 결과를 받아와서 처리
+                val resultValue = data?.getStringExtra("name")
+                binding.usrname.text=resultValue
+                // SecondActivity에서 받아온 결과 처리
+
+        }
+
+
     }
 
     override fun onItemClick(position: Int) {

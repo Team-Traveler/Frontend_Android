@@ -18,6 +18,8 @@ class MakeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
         //출발 날짜 클릭 시,
         val dep=binding.departday
         dep.setOnClickListener {

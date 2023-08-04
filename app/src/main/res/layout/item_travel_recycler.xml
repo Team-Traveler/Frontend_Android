@@ -13,6 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="17dp"
         android:text="1일차"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -30,7 +31,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="373dp"
-        android:layout_height="150dp"
+        android:layout_height="170dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="20dp"
