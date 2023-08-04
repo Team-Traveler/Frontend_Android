@@ -2,16 +2,16 @@ package com.example.traveler
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.databinding.ActivityMytripBinding
 
 
-class MyTripActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
+class MyTravelActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
     private lateinit var binding: ActivityMytripBinding
     private  val list = ArrayList<Contents>()
@@ -45,7 +45,7 @@ class MyTripActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
 
         // 플로팅 버튼 클릭시 에니메이션 동작 기능
-         var fab=binding.fab
+        var fab=binding.fab
         fab.setOnClickListener {
             // SecondActity 화면으로 이동하게 Intent 사용
             val myIntent = Intent(this, MakeActivity::class.java)
@@ -65,7 +65,7 @@ class MyTripActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
         }
 
-        }
+    }
 
 
 
@@ -115,7 +115,3 @@ class MyTripActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
 
 }
-
-
-
-
