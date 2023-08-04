@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".MyTravelFragment">
 
     <ImageView
@@ -19,11 +19,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/freind"
-        android:layout_width="405dp"
+        android:layout_width="match_parent"
         android:layout_height="125dp"
+        android:layout_marginTop="15dp"
         android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/action_bar">
 
@@ -127,10 +126,9 @@
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="144dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@id/freind"
-        app:layout_constraintTop_toTopOf="@id/freind">
+        app:layout_constraintTop_toBottomOf="@+id/freind">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -207,19 +205,8 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:contentDescription="NewProject"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationView"
+        android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -229,4 +216,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navi_menu"
         tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="NewProject"
+        android:src="@drawable/float_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/linear"
+        app:layout_constraintBottom_toTopOf="@id/navigation_bar"
+        app:layout_constraintRight_toRightOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

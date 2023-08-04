@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +20,6 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
     }
 
@@ -54,8 +54,6 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener {
             //editProfile 로 이동
             val myIntent = Intent(activity, EditProfile::class.java)
             startActivity(myIntent)
-
-
         }
         return binding.root
     }
@@ -80,6 +78,14 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener {
         }
     }
     override fun onItemClick(position: Int) {
+        // Handle text click event here
+        val selectedItem = adapter.getItem(position)
+        Toast.makeText(activity, "Clicked on: ${selectedItem.name}", Toast.LENGTH_SHORT).show()
+
+        // 예를 들면, 새로운 액티비티로 이동하려면 아래와 같이 코드를 작성할 수 있습니다.
+        val intent = Intent(activity, DetailActivity::class.java)
+        intent.putExtra("selectedItemName", selectedItem.name)
+        startActivity(intent)
     }
 
 }
