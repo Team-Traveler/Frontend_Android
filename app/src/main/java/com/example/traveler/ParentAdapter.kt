@@ -22,6 +22,7 @@ class ParentAdapter(private val parentDataList: List<ParentData>) :
             binding.date.text = parentData.date
             binding.date2.text = parentData.day
 
+            //자식 리사이클러뷰
             val childAdapter = ChildAdapter(parentData.childDataList)
             childRecyclerView.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
             childRecyclerView.adapter = childAdapter

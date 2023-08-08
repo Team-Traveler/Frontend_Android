@@ -20,7 +20,7 @@
         <LinearLayout
             android:id="@+id/up"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -62,7 +62,7 @@
             <TextView
                 android:id="@+id/course"
                 android:layout_width="300dp"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:text="여행 코스 이름"
@@ -97,7 +97,7 @@
             <TextView
                 android:id="@+id/place"
                 android:layout_width="300dp"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:text="어디로 여행가시나요?"
@@ -132,7 +132,7 @@
             <TextView
                 android:id="@+id/when"
                 android:layout_width="300dp"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="10dp"

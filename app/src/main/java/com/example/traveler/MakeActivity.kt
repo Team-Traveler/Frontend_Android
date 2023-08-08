@@ -1,12 +1,16 @@
 package com.example.traveler
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.traveler.databinding.ActivityMakeBinding
+import java.security.MessageDigest
 import java.text.SimpleDateFormat
+import java.util.Base64
 import java.util.Calendar
 
 class MakeActivity : AppCompatActivity() {
@@ -16,8 +20,6 @@ class MakeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-
 
 
         //출발 날짜 클릭 시,
@@ -104,7 +106,7 @@ class MakeActivity : AppCompatActivity() {
 
 
 
-        setResult(RESULT_OK,resulIntent)
+        setResult(Activity.RESULT_OK,resulIntent)
         finish()
 
     }

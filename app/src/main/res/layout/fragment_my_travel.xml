@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -39,32 +40,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/home_item_iv"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_launcher_foreground"
-            app:civ_border_color="#aaa"
-            app:civ_border_overlay="true"
-            app:civ_border_width="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/frame"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.634" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/home_item_tv"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
-            android:text="이름"
+            android:text="test"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -81,7 +76,7 @@
             android:textColor="#8A252525"
             app:layout_constraintBottom_toBottomOf="@+id/home_item_iv"
             app:layout_constraintStart_toEndOf="@+id/home_item_iv"
-            app:layout_constraintTop_toBottomOf="@+id/home_item_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/username" />
 
         <TextView
             android:id="@+id/home_item_email4"
@@ -93,7 +88,7 @@
             android:textColor="#8A252525"
             app:layout_constraintBottom_toBottomOf="@+id/home_item_iv"
             app:layout_constraintStart_toEndOf="@+id/home_item_iv"
-            app:layout_constraintTop_toBottomOf="@+id/home_item_tv"
+            app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintVertical_bias="0.45" />
 
         <TextView
@@ -107,18 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="4dp"
-            android:text="편집"
-            android:textColor="#8A252525"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -149,11 +133,26 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
-                tools:listitem="@layout/item_recycler" />
+                tools:listitem="@layout/item_recycler"
+                android:visibility="visible" /> <!-- 편집 모드 미적용시 보이기 -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/editedView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:listitem="@layout/item_edit_recycler"
+                android:visibility="gone"/>
+            <!-- 편집 모드 적용시 숨김 처리 -->
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="97dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
@@ -161,11 +160,40 @@
                 android:text="예정된 여행"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/recyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="20dp"
+                android:text="편집"
+                android:textColor="#8A252525"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="20dp"
+                android:text="편집완료"
+                android:textColor="#8A252525"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                android:visibility="gone"/> <!-- initially hidden -->
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -225,7 +253,13 @@
         android:layout_marginBottom="10dp"
         android:contentDescription="NewProject"
         android:src="@drawable/float_btn"
+        app:backgroundTint="#FFFFFF"
+        app:elevation="0dp"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="@+id/linear"
         app:layout_constraintBottom_toTopOf="@id/navigation_bar"
         app:layout_constraintRight_toRightOf="parent"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,28 +2,16 @@ package com.example.traveler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.adapters.ViewBindingAdapter.setPadding
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemRecyclerBinding
 
-class MyAdapter(private val items: ArrayList<Contents>) :
+class MyAdapter(private var items: ArrayList<Contents>) :
 RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     private var itemClickListener: OnItemClickListener? = null
 
-    inner class ViewHolder(val binding: ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            //text 클릭 시, 이벤트 처리 코드 추가
-            //클릭 이벤트 발새 시, onitemclicklistener 호출해
-            //해당 아이템의 위치 전달
-            binding.detail.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    itemClickListener?.onItemClick(position)
 
-
-                }
-            }
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -36,6 +24,27 @@ RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         holder.binding.textView.text = item.name
         holder.binding.day.text = item.day
         holder.binding.date.text = item.date
+
+
+    }
+
+    inner class ViewHolder(val binding: ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            //text 클릭 시, 이벤트 처리 코드 추가
+            //클릭 이벤트 발새 시, onitemclicklistener 호출해
+            //해당 아이템의 위치 전달 (상세보기 클릭 시 이벤트 )
+            binding.detail.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    itemClickListener?.onItemClick(position)
+
+
+                }
+            }
+        }
+
+
+
     }
 
     override fun getItemCount(): Int = items.size
@@ -46,7 +55,7 @@ RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     }
 
     // 외부에서 아이템 클릭 리스너 설정
-    fun setOnItemClickListener(listener: MyTravelActivity) {
+    fun setOnItemClickListener(listener: MyTravelFragment) {
         itemClickListener = listener
     }
 
@@ -54,4 +63,8 @@ RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
+
 }
+
+
+
