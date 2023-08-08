@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="withWhom">
+        <item>가족</item>
+        <item>친구</item>
+        <item>혼자</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="what">
+        <item>인스타 따라잡기</item>
+        <item>관광지 투어</item>
+        <item>휴양 하기</item>
+    </string-array>
+
+    <string-array name="intensity">
+        <item>느긋하게</item>
+        <item>적당하게</item>
+        <item>바쁘게</item>
+    </string-array>
+
+    <string-array name="menu">
+        <item>한식</item>
+        <item>중식</item>
+        <item>일식</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="drink">
+        <item>소주</item>
+        <item>맥주</item>
+        <item>와인</item>
+        <item>칵테일</item>
+        <item>전통주</item>
+        <item>기타</item>
+        <item>안마심</item>
+    </string-array>
+
+    <string-array name="year">
+        <item>2023년</item>
+        <item>2024년</item>
+        <item>2025년</item>
+        <item>2026년</item>
+        <item>2027년</item>
+        <item>2028년</item>
+        <item>2029년</item>
+        <item>2030년</item>
+    </string-array>
+
+    <string-array name="month">
+        <item>1월</item>
+        <item>2월</item>
+        <item>3월</item>
+        <item>4월</item>
+        <item>5월</item>
+        <item>6월</item>
+        <item>7월</item>
+        <item>8월</item>
+        <item>9월</item>
+        <item>10월</item>
+        <item>11월</item>
+        <item>12월</item>
+    </string-array>
+
+    <string-array name="day">
+        <item>1일</item>
+        <item>2일</item>
+        <item>3일</item>
+        <item>4일</item>
+        <item>5일</item>
+        <item>6일</item>
+        <item>7일</item>
+        <item>8일</item>
+        <item>9일</item>
+        <item>10일</item>
+        <item>11일</item>
+        <item>12일</item>
+        <item>13일</item>
+        <item>14일</item>
+        <item>15일</item>
+        <item>16일</item>
+        <item>17일</item>
+        <item>18일</item>
+        <item>19일</item>
+        <item>20일</item>
+        <item>21일</item>
+        <item>22일</item>
+        <item>23일</item>
+        <item>24일</item>
+        <item>25일</item>
+        <item>26일</item>
+        <item>27일</item>
+        <item>28일</item>
+        <item>29일</item>
+        <item>30일</item>
+        <item>31일</item>
+    </string-array>
+</resources>
