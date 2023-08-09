@@ -55,9 +55,9 @@ class DetailActivity : AppCompatActivity() {
 
         }
 
-        //2.카카오맵 연결
+  /*      //2.카카오맵 연결
         val mapView = MapView(this)
-        binding.clKakaoMapView.addView(mapView)
+        binding.clKakaoMapView.addView(mapView)*/
 
         //3. 부모 리사이클러뷰 설정
         parentAdapter = ParentAdapter(parentDataList)

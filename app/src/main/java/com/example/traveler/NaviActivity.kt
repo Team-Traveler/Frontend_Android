@@ -12,7 +12,6 @@ private const val TAG_STORY = "story_fragment"
 private const val TAG_NOTE = "note_fragment"
 private const val TAG_MY_TRAVEL = "my_page_fragment"
 
-
 class NaviActivity : AppCompatActivity() {
     private lateinit var binding : ActivityNaviBinding
 
@@ -21,11 +20,11 @@ class NaviActivity : AppCompatActivity() {
         binding = ActivityNaviBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setFragment(TAG_RECOMM, RecommandFragment())
+        setFragment(TAG_RECOMM, RecommendFragment())
 
         binding.navigationView.setOnItemSelectedListener { item ->
             when(item.itemId) {
-                R.id.airplane -> setFragment(TAG_RECOMM, RecommandFragment())
+                R.id.airplane -> setFragment(TAG_RECOMM, RecommendFragment())
                 R.id.story -> setFragment(TAG_STORY, StoryFragment())
                 R.id.notepad-> setFragment(TAG_NOTE, NoteFragment())
                 R.id.my_travel-> setFragment(TAG_MY_TRAVEL, MyTravelFragment())
