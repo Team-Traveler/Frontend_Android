@@ -1,3 +1,4 @@
+/*
 package com.example.traveler
 
 import android.app.Activity
@@ -104,14 +105,17 @@ class MyTravelActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         // Handle text click event here
-     /*   val selectedItem = adapter.getItem(position)
+     */
+/*   val selectedItem = adapter.getItem(position)
         Toast.makeText(this, "Clicked on: ${selectedItem.name}", Toast.LENGTH_SHORT).show()
 
         // 예를 들면, 새로운 액티비티로 이동하려면 아래와 같이 코드를 작성할 수 있습니다.
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("selectedItemName", selectedItem.name)
-        startActivity(intent)*/
+        startActivity(intent)*//*
+
     }
 
 
 }
+*/
