@@ -24,12 +24,7 @@ class ChildAdapter(private val childDataList: List<ChildData>) : RecyclerView.Ad
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemChildRecyclerBinding.inflate(inflater, parent, false)
 
-/*
-        // RecyclerView의 높이를 설정하는 부분
-        val layoutParams = binding.root.layoutParams
-        layoutParams.height = 180 // 고정된 크기로 설정하거나, 원하는 크기로 설정해주세요.
-        binding.root.layoutParams = layoutParams
-*/
+
 
         return ChildViewHolder(binding)
     }

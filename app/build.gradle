@@ -58,6 +58,12 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/libDaumMapAndroid.jar')
 
+    //implementation group: 'net.daum', name: 'android-sdk', version: '1.4.0' //절대 쓰지마시오 오류폭탄
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "io.reactivex.rxjava3:rxjava:3.1.0"
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0" // RxJava 3 Adapter for Retrofit
 
 
 }

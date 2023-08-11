@@ -36,6 +36,8 @@ class NaviActivity : AppCompatActivity() {
         val manager: FragmentManager = supportFragmentManager
         val fragTransaction = manager.beginTransaction()
 
+
+
         if (manager.findFragmentByTag(tag) == null){
             fragTransaction.add(R.id.mainFrameLayout, fragment, tag)
         }
@@ -73,8 +75,8 @@ class NaviActivity : AppCompatActivity() {
             }
         }
         else if (tag == TAG_MY_TRAVEL){
-            if (airplane != null){
-                fragTransaction.show(airplane)
+            if (my_travel != null){
+                fragTransaction.show(my_travel)
             }
         }
         fragTransaction.commitAllowingStateLoss()
