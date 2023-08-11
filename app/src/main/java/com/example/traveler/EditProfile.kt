@@ -35,7 +35,7 @@ class EditProfile : AppCompatActivity() {
 
         val username=binding.username
         // 이전 페이지로 돌아가기 위해 [수정버튼] 클릭 이벤트 처리
-        binding.button.setOnClickListener {
+        binding.editbtn.setOnClickListener {
             val modifiedValue = username.text.toString()
 
             // 메인 화면으로 수정 결과값 전달

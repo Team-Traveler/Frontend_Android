@@ -123,6 +123,8 @@
             android:layout_weight="1"
             tools:visibility="visible">
 
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
@@ -147,8 +149,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
                 tools:listitem="@layout/item_edit_recycler"
-                android:visibility="visible"/>
-            <!-- 편집 모드 적용시 숨김 처리 -->
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/textView4"
