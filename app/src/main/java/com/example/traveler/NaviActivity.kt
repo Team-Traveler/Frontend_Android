@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.traveler.databinding.ActivityNaviBinding
+import com.example.traveler.fragment.NoteFragment
 
 private const val TAG_RECOMM = "recomm_fragment"
 private const val TAG_STORY = "story_fragment"
