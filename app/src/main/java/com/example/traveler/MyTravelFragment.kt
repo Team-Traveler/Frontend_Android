@@ -20,11 +20,16 @@ import com.example.traveler.databinding.FragmentMyTravelBinding
 
 //서버 연결
 import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import java.io.IOException
 
 
 class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener, MyAdapter2.OnItemClickListener {
@@ -186,6 +191,8 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener, MyAdapter2.O
 
             list.add(Contents("$name", "$day", "$date","$location","$start","$end"))  //넘겨받은 값 db에 추가
 
+
+            //코루틴으로 네트워크 작업 실행
             //추가사항 ~ data.json으로 값 넘겨주기 및 변환
             val trip = TripData(
                 title = "test",
@@ -209,9 +216,32 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener, MyAdapter2.O
                 .post(requestBody)
                 .build()
 
-            val response = client.newCall(request).execute()
-            val responseBody = response.body?.string()
+            // 코루틴으로 백그라운드에서 네트워크 요청 실행
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val response = client.newCall(request).execute()
+                    if (response.isSuccessful) {
+                        // 성공 처리
+                        // responseBody를 가지고 원하는 작업을 수행합니다.
+                        // 예를 들어, 서버에서 반환한 메시지를 로그로 출력하거나 UI에 표시할 수 있습니다.
+                        val responseBody = response.body?.string()
 
+                        Log.d("Network", "Response Body: $responseBody")
+
+                        // UI 업데이트가 필요한 경우, Main 스레드에서 처리합니다.
+                        withContext(Dispatchers.Main) {
+                            // UI 업데이트 작업 수행
+                            // 예: Toast 메시지 띄우기 또는 화면 갱신
+                        }
+                    } else {
+                        // 실패 처리
+                        Log.e("Network", "Request failed with response code: ${response.code}")
+
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
 
 
             //여기까지
