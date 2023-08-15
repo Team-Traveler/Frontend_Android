@@ -1,63 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameDay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.DayFragment">
+    tools:context=".fragment.DayFragment"
+    android:background="@drawable/border_layout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/etCategoryTitle"
+                android:layout_width="362dp"
+                android:layout_height="37dp"
+                android:background="@drawable/underline_background2"
+                android:text="일일 가계부"
+                android:textAlignment="center"
+                android:textColor="#404040"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/editBtnCost"
+                android:layout_width="48dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="298dp"
-                    android:layout_height="match_parent"
-                    android:text="일일 가계부"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/editDayBtn"
-                    android:layout_width="103dp"
-                    android:layout_height="match_parent"
-                    android:text="편집" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="1일차 | 3월 10일"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvDay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/list_item">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <Button
-                    android:id="@+id/costAddBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="비용추가" />
-            </LinearLayout>
-
+                android:background="@drawable/underline_background"
+                android:paddingBottom="0dp"
+                android:text="편집"
+                android:textColor="#707070" />
         </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/outerRvDay"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            tools:listitem="@layout/outer_cost_layout" />
+
+        <Button
+            android:id="@+id/addCostBtn"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:backgroundTint="#FBFBFB"
+            android:text="비용추가"
+            android:textColor="#404040"
+            android:textSize="10sp" />
+    </LinearLayout>
 
 </FrameLayout>

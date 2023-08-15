@@ -7,35 +7,31 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.getSystemService
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.traveler.Interface.OuterDialogInterface
 import com.example.traveler.databinding.OuterItemLayoutBinding
 import com.example.traveler.dialog.InnerDialog
-import com.example.traveler.model.OuterDto
-import com.example.traveler.dialogInterface.OuterDialogInterface
 import com.example.traveler.model.InnerDto
+import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel
 import com.example.traveler.viewmodel.OuterViewModel
 
 class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewModel: InnerViewModel, private val outerViewModel: OuterViewModel) :
     RecyclerView.Adapter<OuterAdapter.OuterViewHolder>() {
 
-    private val innerList = ArrayList<InnerDto>()
-
     inner class OuterViewHolder(
         val itemBinding: OuterItemLayoutBinding,
         private val innerViewModel: InnerViewModel
     ) :
         RecyclerView.ViewHolder(itemBinding.root), OuterDialogInterface {
-        private var innerAdapter: InnerAdapter = InnerAdapter(innerList, innerViewModel)
+        private val innerList = ArrayList<InnerDto>()
+        private var innerAdapter: InnerAdapter = InnerAdapter(ArrayList(), innerViewModel)
 
         fun bind(outer: OuterDto) {
             itemBinding.etCategoryTitle.setText(outer.title)
-
-            itemBinding.innerRecyclerView.layoutManager = LinearLayoutManager(itemView.context,
-                LinearLayoutManager.VERTICAL,false)
+            val layoutManager = GridLayoutManager(itemView.context, 2) // 한 줄에 2개의 열로 설정
+            itemBinding.innerRecyclerView.layoutManager = layoutManager
             itemBinding.innerRecyclerView.adapter = innerAdapter
 
             itemBinding.addImgBtn.setOnClickListener {
@@ -82,11 +78,13 @@ class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewM
         override fun onOkButtonClicked(title: String) {
             val inner = InnerDto(0, false, title)
             // inner 리스트 추가하는 부분 다시 해야함. ROOM에 저장하기. 지금은 단순 추가
-            innerViewModel.addInner(inner)
+//            innerViewModel.addInner(inner)
             //innerList에 항목 추가
-            innerList.add(inner)
+//            innerList.add(inner)
+
             //추가된 항목을 RecyclerView에 적용
-            innerAdapter.notifyItemInserted(innerList.size - 1)
+//            innerAdapter.notifyItemInserted(innerList.size - 1)
+            innerAdapter.addInnerItem(inner)
             Toast.makeText(itemView.context,"추가", Toast.LENGTH_SHORT).show()
         }
     }

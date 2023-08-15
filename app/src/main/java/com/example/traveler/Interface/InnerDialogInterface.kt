@@ -1,4 +1,4 @@
-package com.example.traveler.dialogInterface
+package com.example.traveler.Interface
 
 interface InnerDialogInterface {
     fun onOkButtonClicked(title : String)

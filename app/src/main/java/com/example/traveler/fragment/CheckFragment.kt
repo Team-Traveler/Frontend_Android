@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.traveler.Interface.OuterDialogInterface
 import com.example.traveler.adapter.InnerAdapter
 import com.example.traveler.adapter.OuterAdapter
 import com.example.traveler.databinding.FragmentCheckBinding
 import com.example.traveler.dialog.OuterDialog
-import com.example.traveler.dialogInterface.OuterDialogInterface
 import com.example.traveler.model.InnerDto
 import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel
@@ -44,9 +44,9 @@ class CheckFragment : Fragment(), OuterDialogInterface {
             adapter.setOuterData(it)
         })
 
-        innerViewModel.readAllData.observe(viewLifecycleOwner, Observer {
-            innerAdapter.setInnerData(it)
-        })
+//        innerViewModel.readAllData.observe(viewLifecycleOwner, Observer {
+//            innerAdapter.setInnerData(it)
+//        })
 
         binding!!.categoryBtnAdd.setOnClickListener {
             onBtnClicked()

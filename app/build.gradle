@@ -71,4 +71,12 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 
     implementation 'androidx.fragment:fragment-ktx:1.5.7'
+
+    implementation 'com.google.code.gson:gson:2.8.8' // Gson 라이브러리 추가
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    // 가계부 요약- 지출 그래프
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

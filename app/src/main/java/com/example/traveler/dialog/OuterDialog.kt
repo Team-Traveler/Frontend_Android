@@ -9,8 +9,8 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.traveler.Interface.OuterDialogInterface
 import com.example.traveler.R
-import com.example.traveler.dialogInterface.OuterDialogInterface
 
 class OuterDialog(context: Context, myInterface: OuterDialogInterface) : Dialog(context){
     // 액티비티에서 인터페이스를 받아옴

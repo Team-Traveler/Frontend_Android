@@ -1,7 +1,7 @@
 package com.example.traveler.repository
 
-import com.example.traveler.model.OuterDto
 import com.example.traveler.data.OuterDao
+import com.example.traveler.model.OuterDto
 import kotlinx.coroutines.flow.Flow
 
 class OuterRepository(private val outerDao: OuterDao) {

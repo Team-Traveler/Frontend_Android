@@ -9,8 +9,8 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.traveler.Interface.UpdateDialogInterface
 import com.example.traveler.R
-import com.example.traveler.dialogInterface.UpdateDialogInterface
 
 class UpdateDialog(context : Context, updateDialogInterface : UpdateDialogInterface) : Dialog(context) {
 

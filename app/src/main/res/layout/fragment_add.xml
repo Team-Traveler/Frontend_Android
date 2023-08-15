@@ -1,132 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameAdd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.AddFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="내용"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="내용을 입력하세요"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="날짜선택"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="카테고리"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/contentLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/border_layout"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/dateLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="식비" />
+            <!-- ... 내용 (content) 관련 요소들 ... -->
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="교통" />
+                android:text="내용"
+                android:textColor="#404040"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="관광" />
+                android:backgroundTint="#B5B5B5"
+                android:ems="10"
+                android:hint="내용을 입력하세요"
+                android:inputType="textPersonName"
+                android:textColorHint="#B5B5B5"
+                android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="숙소" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="쇼핑" />
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="항공" />
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="기타" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/dateLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="비용"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:background="@drawable/border_layout"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/categoryLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentLayout">
 
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <!-- ... 날짜선택 (date) 관련 요소들 ... -->
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="날짜선택"
+                android:textColor="#404040"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editCost"
-            android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#B5B5B5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/categoryLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="비용을 입력하세요"
-            android:inputType="textPersonName" />
+            android:background="@drawable/border_layout"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/costLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateLayout">
 
+            <!-- ... 카테고리 (category) 관련 요소들 ... -->
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="카테고리"
+                android:textColor="#404040"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/foodImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:src="@drawable/food"
+                    android:tag="unselected" />
+
+                <ImageButton
+                    android:id="@+id/trafficImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:src="@drawable/traffic"
+                    android:tag="unselected" />
+
+                <ImageButton
+                    android:id="@+id/sightseeingImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:src="@drawable/sightseeing"
+                    android:tag="unselected" />
+
+                <ImageButton
+                    android:id="@+id/stayImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:src="@drawable/stay"
+                    android:tag="unselected" />
+
+                <ImageButton
+                    android:id="@+id/shoppingImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:src="@drawable/shopping"
+                    android:tag="unselected" />
+
+                <ImageButton
+                    android:id="@+id/flightImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:src="@drawable/flight"
+                    android:tag="unselected" />
+
+                <ImageButton
+                    android:id="@+id/etcImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:src="@drawable/etc"
+                    android:tag="unselected" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/costLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_layout"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/addCostOk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoryLayout">
+
+            <!-- ... 비용 (cost) 관련 요소들 ... -->
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="비용"
+                android:textColor="#404040"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="KRW(원)"
+                android:textColorHint="#B5B5B5"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editCost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#B5B5B5"
+                android:ems="10"
+                android:hint="비용을 입력하세요"
+                android:inputType="textPersonName"
+                android:textColorHint="#B5B5B5"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!--        <Button-->
+        <!--            android:id="@+id/addCostBtn"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:backgroundTint="#C5E0B4"-->
+        <!--            android:text="비용 추가하기"-->
+        <!--            android:textColor="#FBFBFB"-->
+        <!--            android:textColorHint="#B5B5B5" />-->
         <Button
-            android:id="@+id/addCostBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="비용 추가하기" />
-    </LinearLayout>
+            android:id="@+id/addCostOk"
+            android:layout_width="332dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#C5E0B4"
+            android:text="비용 추가하기"
+            android:textColor="#FBFBFB"
+            android:textColorHint="#B5B5B5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/costLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

@@ -1,5 +1,6 @@
 package com.example.traveler.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.traveler.model.OuterDto
 import kotlinx.coroutines.flow.Flow

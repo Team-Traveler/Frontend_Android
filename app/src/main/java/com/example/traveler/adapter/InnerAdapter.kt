@@ -8,11 +8,15 @@ import com.example.traveler.databinding.InnerItemLayoutBinding
 import com.example.traveler.model.InnerDto
 import com.example.traveler.viewmodel.InnerViewModel
 
-class InnerAdapter(private var innerList: List<InnerDto>, private val innerViewModel: InnerViewModel) :
+class InnerAdapter(private var innerList: List<InnerDto>, private var innerViewModel: InnerViewModel) :
     RecyclerView.Adapter<InnerAdapter.InnerViewHolder>() {
 
     private var isEditButtonClicked = false
 
+    fun addInnerItem(inner: InnerDto) {
+        innerList = innerList + inner
+        notifyDataSetChanged()
+    }
     class InnerViewHolder(
         val itemBinding: InnerItemLayoutBinding,
         private val innerViewModel: InnerViewModel
