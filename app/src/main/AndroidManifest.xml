@@ -23,6 +23,15 @@
 <!--            android:resource="@xml/ic_launcher.xml" />-->
 
         <activity
+            android:name=".PickTravelActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity
+            android:name=".AddPlaceActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".EditActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -70,6 +79,8 @@
                 android:name="com.kakao.sdk.AppKey"
                 android:value="851b99fc853c676b2b68b41b16ec7f48" />
         </activity>
+        
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>
