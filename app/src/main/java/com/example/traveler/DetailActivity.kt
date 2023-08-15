@@ -4,11 +4,8 @@ import android.R
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.ActionBar
+
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.databinding.ActivityDetailBinding
 import net.daum.mf.map.api.MapView
@@ -21,6 +18,9 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private lateinit var parentAdapter: ParentAdapter
     private val parentDataList = ArrayList<ParentData>()
+    private lateinit var mapView: MapView  // MapView 인스턴스 선언
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,9 +72,9 @@ class DetailActivity : AppCompatActivity() {
         //2.카카오맵 연결
         //카카오지도 추가
 
-        val mapView = MapView(this)
+        mapView = MapView(this)
         binding.mapView.addView(mapView)
-
+///        val mapPoint= MapPoint.mapPointWithGeoCoord(37.28730797086605, 127.01192716921177)
 
 
 
@@ -136,11 +136,21 @@ class DetailActivity : AppCompatActivity() {
 
 
 
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 

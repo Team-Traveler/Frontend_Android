@@ -57,6 +57,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0' // 버전은 최신 버전으로 변경 가능
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/libDaumMapAndroid.jar')
@@ -71,4 +72,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 
     implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    implementation 'com.google.code.gson:gson:2.8.9' // Gson 버전은 최신 버전으로 대체할 수 있습니다.
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1' // OkHttp 버전은 최신 버전으로 대체할 수 있습니다.
+
 }

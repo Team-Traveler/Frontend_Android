@@ -1,10 +1,9 @@
 package com.example.traveler
 
-import android.util.Log
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemTravelRecyclerBinding
@@ -24,7 +23,17 @@ class ParentAdapter(private val parentDataList: List<ParentData>) :
 
             //[편집] 클릭 시,
             binding.edit.setOnClickListener {
+                //장소 추가 페이지로 이동
 
+                val intent = Intent(itemView.context, AddPlaceActivity::class.java)
+
+                // 데이터 전달 (예시: 문자열 데이터)
+                val data = "Hello, Next Activity!"
+                intent.putExtra("date", binding.date.text)
+                intent.putExtra("day", binding.date2.text)
+
+
+                itemView.context.startActivity(intent)
 
             }
 
