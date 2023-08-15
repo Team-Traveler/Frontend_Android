@@ -19,8 +19,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <meta-data
-            android:name="com.google.android.actions" />
-<!--            android:resource="@xml/ic_launcher.xml" />-->
+            android:name="com.google.android.actions"
+            android:resource="@xml/ic_launcher" />
 
         <activity
             android:name=".PickTravelActivity"
