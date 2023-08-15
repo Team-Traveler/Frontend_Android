@@ -9,7 +9,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.traveler.Interface.OuterDialogInterface
 import com.example.traveler.databinding.OuterItemLayoutBinding
 import com.example.traveler.dialog.InnerDialog
 
