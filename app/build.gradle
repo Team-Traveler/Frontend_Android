@@ -72,7 +72,12 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 
     implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    // 가계부 요약- 지출 그래프
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+=======
     implementation 'com.google.code.gson:gson:2.8.9' // Gson 버전은 최신 버전으로 대체할 수 있습니다.
     implementation 'com.squareup.okhttp3:okhttp:4.9.1' // OkHttp 버전은 최신 버전으로 대체할 수 있습니다.
-
 }

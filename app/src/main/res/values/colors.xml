@@ -9,4 +9,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="LightGreen">#C5E0B4</color>
+    <color name="light_background">#B5B5B5</color>
+    <color name="night_background">#404040</color>
 </resources>
