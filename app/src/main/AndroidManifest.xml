@@ -66,6 +66,8 @@
                 android:name="com.kakao.sdk.AppKey"
                 android:value="851b99fc853c676b2b68b41b16ec7f48" />
         </activity>
+        
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>
