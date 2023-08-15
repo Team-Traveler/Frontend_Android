@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.Interface.OuterDialogInterface
 import com.example.traveler.databinding.OuterItemLayoutBinding
 import com.example.traveler.dialog.InnerDialog
+
+
+import com.example.traveler.dialog.dialogInterface.OuterDialogInterface
 import com.example.traveler.model.InnerDto
 import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel

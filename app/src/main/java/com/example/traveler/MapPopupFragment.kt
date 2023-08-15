@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.traveler.databinding.MapPopupLayoutBinding
+
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
@@ -30,6 +31,7 @@ interface OnLocationSelectedListener {
 
 //위치 선택하는 팝업 프래그먼트
 class MapPopupFragment : DialogFragment() {
+    private lateinit var mapView: MapView  // MapView 인스턴스 선언
 
     private var selectedMarker: MapPOIItem? = null // 선택된 마커 정보를 저장할 변수
 
@@ -54,10 +56,40 @@ class MapPopupFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+/*
+        //searchview 검색 이벤트
+        val searchview=binding.searchView
+
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (!query.isNullOrBlank()) {
+                    // 검색 버튼을 눌렀을 때 처리할 작업
+
+
+                    // 검색어로 입력된 주소에 대한 위치 정보 얻기
+                    val location = getLocationFromAddress(requireContext(),query)
+                    if (location != null) {
+                        // 검색한 주소의 위치 정보를 기반으로 마커 추가하는 함수 호출
+                        addMarkerForAddress(mapView, query)
+                    }
+
+                    searchview.setQuery("", false) // 검색창 지움
+                    searchview.clearFocus() // 검색어를 입력하세요 같은 초기 화면 뜸
+
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // 검색어가 변경될 때 처리할 작업
+                return false
+            }
+        })
+*/
 
         _binding?.let { binding ->
 // 여기에서 카카오 지도를 띄우는 로직을 구현
-            val mapView = MapView(requireContext())
+            mapView = MapView(requireContext())
             binding.popupMapView.addView(mapView)
 
             mapView.setPOIItemEventListener(object : MapView.POIItemEventListener {
@@ -86,24 +118,25 @@ class MapPopupFragment : DialogFragment() {
 
             // 검색 버튼 클릭 시 호출되는 함수
             binding.searchButton.setOnClickListener {
-//검색어로 입력된거 ->위치정보 받기
+                //검색어로 입력된거 ->위치정보 받기
                 val address = binding.searchEditText.text.toString()
                 val location = context?.let { it1 -> getLocationFromAddress(it1, address) }
                 if (location != null) {
                     // 이제 얻은 위도와 경도를 활용해서 지도에 마커 등을 표시할 수 있습니다.
                     addMarkerForAddress(mapView, address)
 
+
                 }
 
             }
 
 
-// 완료 버튼 클릭 시, 팝업창 닫히고 text 받아옴
+                    // 완료 버튼 클릭 시, 팝업창 닫히고 text 받아옴
             binding.completebtn.setOnClickListener {
 
                 selectedMarker?.let { marker ->
 
-// 여기서 address, latitude, longitude 값을 원하는 곳에 전달하거나 활용할 수 있습니다.
+                // 여기서 address, latitude, longitude 값을 원하는 곳에 전달하거나 활용할 수 있습니다.
                     val address = marker.itemName
                     val location = getLocationFromAddress(requireContext(), address)
                     if (location != null) {
@@ -124,7 +157,7 @@ class MapPopupFragment : DialogFragment() {
     }
 
     private fun addMarkerForAddress(mapView: MapView, address: String) {
-        val location = getLocationFromAddress(requireContext(), address)
+        val location = getLocationFromAddress(mapView.context, address)
         if (location != null) {
             val latitude = location.first
             val longitude = location.second
