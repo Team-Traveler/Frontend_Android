@@ -12,12 +12,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.traveler.databinding.FragmentMyTravelBinding
+
+//서버 연결
+import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+
 
 class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener, MyAdapter2.OnItemClickListener {
     private var selectedPosition: Int = RecyclerView.NO_POSITION
@@ -68,9 +76,15 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener, MyAdapter2.O
         }
 
 
-//[프로필 편집] 클릭
+        //[찜한 여행]클릭 시, 이동
+        binding.pickTravel.setOnClickListener {
+            val intent=Intent(requireContext(),PickTravelActivity::class.java)
+            startActivity(intent)
+        }
+
+        //[프로필 편집] 클릭
         binding.editProfile.setOnClickListener{
-//editProfile 로 이동
+        //editProfile 로 이동
             val myIntent = Intent(activity, EditProfile::class.java)
             startActivityForResult(myIntent, SECOND_ACTIVITY_REQUEST_CODE)
         }
@@ -169,7 +183,40 @@ class MyTravelFragment : Fragment(), MyAdapter.OnItemClickListener, MyAdapter2.O
             Log.d("day", "day 는 ${day}")
             Log.d("date", "date 는 ${date}")
 
+
             list.add(Contents("$name", "$day", "$date","$location","$start","$end"))  //넘겨받은 값 db에 추가
+
+            //추가사항 ~ data.json으로 값 넘겨주기 및 변환
+            val trip = TripData(
+                title = "test",
+                destination = "test",
+                start_date = "2023-07-31",
+                end_date = "2023-08-02",
+                write_status = 0
+            )
+
+
+            val gson = Gson()
+            val jsonData = gson.toJson(trip)
+
+            val url = "http://15.164.232.95:9000/travel"
+            val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
+            val requestBody = RequestBody.create(mediaType, jsonData)
+
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build()
+
+            val response = client.newCall(request).execute()
+            val responseBody = response.body?.string()
+
+
+
+            //여기까지
+
+
             Log.d("contents", list.toString())
             /*adapter?.notifyItemInserted((list.size -1))
              adapter2?.notifyItemInserted((list.size -1))*/

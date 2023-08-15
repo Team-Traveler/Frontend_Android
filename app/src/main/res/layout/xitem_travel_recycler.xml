@@ -43,28 +43,17 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/childRecyclerView"
-            android:layout_width="301dp"
-            android:layout_height="160dp"
-            android:layout_marginEnd="68dp"
+            android:layout_width="370dp"
+            android:layout_height="162dp"
             android:clickable="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_child_recycler">
+            tools:listitem="@layout/xitem_child_recycler">
 
         </androidx.recyclerview.widget.RecyclerView>
 
-        <TextView
-            android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="25dp"
-            android:backgroundTint="#ffff"
-            android:text="편집"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/childRecyclerView"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

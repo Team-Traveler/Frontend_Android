@@ -13,7 +13,7 @@ import com.example.traveler.adapter.InnerAdapter
 import com.example.traveler.adapter.OuterAdapter
 import com.example.traveler.databinding.FragmentCheckBinding
 import com.example.traveler.dialog.OuterDialog
-import com.example.traveler.dialogInterface.OuterDialogInterface
+import com.example.traveler.dialog.dialogInterface.OuterDialogInterface
 import com.example.traveler.model.InnerDto
 import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel

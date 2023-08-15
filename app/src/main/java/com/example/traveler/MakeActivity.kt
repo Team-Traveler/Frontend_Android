@@ -1,22 +1,16 @@
 package com.example.traveler
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
+
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.traveler.databinding.ActivityMakeBinding
-import java.security.MessageDigest
+import net.daum.mf.map.api.MapView
 import java.text.SimpleDateFormat
-import java.util.Base64
-import java.util.Calendar
-import java.util.Date
+
 
 class MakeActivity : AppCompatActivity(), OnLocationSelectedListener  {
     private val REQUEST_CODE=100
@@ -27,6 +21,7 @@ class MakeActivity : AppCompatActivity(), OnLocationSelectedListener  {
     private var selectedLocation: String = "" // 위치 정보를 저장할 변수
     private var selectedLatitude: Double = 0.0  // 위도정보를 저장할 변수
     private var selectedLongitude: Double=0.0 // 경도 정보를 저장할 변수
+    private lateinit var mapView: MapView  // MapView 인스턴스 선언
 
 
     val binding by lazy{ActivityMakeBinding.inflate(layoutInflater)}
@@ -119,6 +114,8 @@ class MakeActivity : AppCompatActivity(), OnLocationSelectedListener  {
         }
 
     }
+
+
 
 
 
