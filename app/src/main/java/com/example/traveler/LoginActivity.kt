@@ -11,6 +11,7 @@ class LoginActivity : AppCompatActivity(){
         setContentView(R.layout.activity_login)
 
         val button_login = findViewById<ImageButton>(R.id.button_login)
+
         button_login.setOnClickListener {
             startActivity(Intent(this, NaviActivity::class.java))
         }
