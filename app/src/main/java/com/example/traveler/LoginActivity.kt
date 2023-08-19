@@ -44,6 +44,11 @@ class LoginActivity : AppCompatActivity(){
                         }
                     }
                 }
+                else if (token == null) {
+                    Toast.makeText(this, "토큰 없음", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, NaviActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
