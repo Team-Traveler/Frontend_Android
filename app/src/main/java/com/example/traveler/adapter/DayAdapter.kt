@@ -1,10 +1,13 @@
 package com.example.traveler.adapter
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.traveler.AddActivity
 import com.example.traveler.Interface.DayInterface
 import com.example.traveler.R
 import com.example.traveler.databinding.OuterCostLayoutBinding
@@ -15,7 +18,6 @@ class DayAdapter(private val dayDataList: List<DayDto>) :
     RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
 
     private val costDataList = ArrayList<CostDto>()
-
     class DayViewHolder
         (
         val binding: OuterCostLayoutBinding
@@ -32,10 +34,27 @@ class DayAdapter(private val dayDataList: List<DayDto>) :
             val costAdapter = CostAdapter(dayDto.costDataList)
             costRecyclerView.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
             costRecyclerView.adapter = costAdapter
+            val REQUEST_CODE_ADD = Bundle()
+
+            // 비용추가를 누르면 AddActivity로 이동
+            binding.addCostBtn.setOnClickListener {
+                val intent = Intent(binding.root.context, AddActivity::class.java)
+                binding.root.context.startActivity(intent, REQUEST_CODE_ADD)
+            }
+
+            binding.editBtnCost.setOnClickListener {
+                if (binding.editBtnCost.text == "편집") {
+                    binding.editBtnCost.text = "편집 완료"
+                }
+                else {
+                    binding.editBtnCost.text = "편집"
+                }
+                costAdapter.updateButtonState()
+            }
         }
-        override fun onOkButtonClicked(category: String, content: String, cost: String) {
-            val cost = CostDto(0, category, content, cost)
-            costAdapter.addCostItem(cost)
+        override fun onOkButtonClicked(date: String, day: String, content: String, category: String, cost: String) {
+//            val cost = CostDto(0, category, content, cost)
+//            costAdapter.addCostItem(cost)
             Toast.makeText(itemView.context,"추가", Toast.LENGTH_SHORT).show()
         }
     }

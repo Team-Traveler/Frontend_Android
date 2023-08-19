@@ -1,5 +1,5 @@
 package com.example.traveler.Interface
 
 interface DayInterface {
-    fun onOkButtonClicked(category: String, content: String, cost: String)
+    fun onOkButtonClicked(date: String, day: String, content: String, category: String, cost: String)
 }

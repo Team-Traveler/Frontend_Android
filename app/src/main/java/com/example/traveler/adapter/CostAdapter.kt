@@ -11,16 +11,18 @@ class CostAdapter(private var costDataList: List<CostDto>) : RecyclerView.Adapte
 
     private var isEditButtonCostClicked = false
 
-    fun addCostItem(costDto: CostDto) {
-        costDataList = costDataList + costDto
-        notifyDataSetChanged()
-    }
-
     class CostViewHolder(val binding: InnerCostLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(costDto: CostDto) {
             binding.tvCategory.text = costDto.category
             binding.tvContent.text = costDto.content
             binding.tvCost.text = costDto.cost
+        }
+        init {
+            // Delete 버튼을 클릭할 때의 동작 설정
+            binding.deleteImgBtn2.setOnClickListener {
+                // 버튼 동작 처리
+                // 이 부분에서 해당 아이템 삭제 등의 동작을 수행하면 됩니다.
+            }
         }
     }
 
@@ -38,7 +40,7 @@ class CostAdapter(private var costDataList: List<CostDto>) : RecyclerView.Adapte
         if (isEditButtonCostClicked) {
             holder.binding.deleteImgBtn2.visibility = View.VISIBLE
         } else {
-            holder.binding.deleteImgBtn2.visibility = View.INVISIBLE
+            holder.binding.deleteImgBtn2.visibility = View.GONE
         }
     }
 

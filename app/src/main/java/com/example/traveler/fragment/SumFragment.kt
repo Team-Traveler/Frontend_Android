@@ -1,10 +1,13 @@
-package com.example.traveler
+package com.example.traveler.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.traveler.MainActivity
+import com.example.traveler.NaviActivity
+import com.example.traveler.R
 import com.example.traveler.databinding.FragmentSumBinding
 
 class SumFragment : Fragment() {
@@ -17,13 +20,13 @@ class SumFragment : Fragment() {
     ): View? {
         binding = FragmentSumBinding.inflate(inflater,container,false)
 
-//        val transaction = childFragmentManager.beginTransaction()
-//            transaction.replace(R.id.framelayout_sum, SumGraphFragment())
-//            transaction.disallowAddToBackStack()
-//            transaction.commit()
+        val transaction = childFragmentManager.beginTransaction()
+            transaction.replace(R.id.framelayout_sum, SumGraphFragment())
+            transaction.disallowAddToBackStack()
+            transaction.commit()
 
         binding.putBudget.setOnClickListener {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction()
+            val transaction = (activity as NaviActivity).supportFragmentManager.beginTransaction()
             transaction.replace(R.id.frameLayout, BudgetFragment())
             transaction.disallowAddToBackStack()
             transaction.commit()

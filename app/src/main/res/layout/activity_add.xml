@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameAdd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AddFragment">
-
+    tools:context=".AddActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -95,7 +94,7 @@
 
                 <Spinner
                     android:id="@+id/spinner1"
-                    android:layout_width="90dp"
+                    android:layout_width="154dp"
                     android:layout_height="24dp"
                     android:backgroundTint="#B5B5B5" />
 
@@ -198,9 +197,9 @@
                 android:id="@+id/costLayout"
                 android:layout_width="320dp"
                 android:layout_height="104dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/border_layout"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/addCostOk"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/categoryLayout">
@@ -215,7 +214,7 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/editTextText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -246,19 +245,22 @@
             <!--            android:text="비용 추가하기"-->
             <!--            android:textColor="#FBFBFB"-->
             <!--            android:textColorHint="#B5B5B5" />-->
-            <Button
-                android:id="@+id/addCostOk"
-                android:layout_width="332dp"
-                android:layout_height="49dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="#C5E0B4"
-                android:text="비용 추가하기"
-                android:textColor="#FBFBFB"
-                android:textColorHint="#B5B5B5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costLayout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/addCostOk"
+        android:layout_width="332dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#C5E0B4"
+        android:text="비용 추가하기"
+        android:textColor="#FBFBFB"
+        android:textColorHint="#B5B5B5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

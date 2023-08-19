@@ -23,6 +23,10 @@
             android:name="com.google.android.actions"
             android:resource="@xml/ic_launcher" />
 
+        <activity android:name=".AddActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
         <activity
             android:name=".PickTravelActivity"
             android:exported="false"
@@ -66,8 +70,12 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <data android:host="oauth"
-                    android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" android:host="oauth"/>
+<!--                <data android:host="oauth"-->
+<!--                    android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />-->
             </intent-filter>
         </activity>
         <activity
@@ -83,7 +91,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="com.kakao.sdk.AppKey"
                 android:value="851b99fc853c676b2b68b41b16ec7f48" />

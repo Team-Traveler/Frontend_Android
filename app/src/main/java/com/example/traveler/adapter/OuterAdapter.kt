@@ -9,15 +9,19 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.traveler.Interface.OuterDialogInterface
+import com.example.traveler.NewTitleData
 import com.example.traveler.databinding.OuterItemLayoutBinding
 import com.example.traveler.dialog.InnerDialog
-
-
-import com.example.traveler.dialog.dialogInterface.OuterDialogInterface
 import com.example.traveler.model.InnerDto
 import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel
 import com.example.traveler.viewmodel.OuterViewModel
+import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 
 class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewModel: InnerViewModel, private val outerViewModel: OuterViewModel) :
     RecyclerView.Adapter<OuterAdapter.OuterViewHolder>() {
@@ -120,4 +124,21 @@ class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewM
         outerList = outerData
         notifyDataSetChanged()
     }
+
+    val newTitle = NewTitleData(
+        newTitle = "새로운 체크리스트 제목"
+    )
+    val gson = Gson()
+    val jsonData = gson.toJson(newTitle)
+
+    val url = "http://15.164.232.95:9000/checklist/{cId}/title"
+    val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
+    val requestBody = RequestBody.create(mediaType, jsonData)
+
+    val client = OkHttpClient()
+    val request = Request.Builder()
+        .url(url)
+        .patch(requestBody)
+        .build()
+
 }

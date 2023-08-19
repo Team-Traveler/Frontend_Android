@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,36 +11,52 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="195dp"
-            android:layout_height="56dp"
-            android:text="Check My Travel"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="나의 여행 노트" />
-
-        <Button
-            android:id="@+id/btn_travel_choice"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#C5E0B4"
-            android:text="후쿠오카 여행" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="195dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="52dp"
+                android:text="Check My Travel"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:text="나의 여행 노트"
+                app:layout_constraintBottom_toTopOf="@+id/btn_travel_choice"
+                tools:layout_editor_absoluteX="3dp" />
+
+            <Button
+                android:id="@+id/btn_travel_choice"
+                android:layout_width="320dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#C5E0B4"
+                android:text="후쿠오카 여행"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.viewpager2.widget.ViewPager2
-            android:background="@drawable/border_layout"
             android:id="@+id/vpCheck"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+            android:layout_height="530dp"
+            android:background="@drawable/border_layout" />
+
     </LinearLayout>
+
 </FrameLayout>
