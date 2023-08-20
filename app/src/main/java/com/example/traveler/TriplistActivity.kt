@@ -23,6 +23,7 @@ class TriplistActivity : Fragment() {
         return tListBinding.root
     }
 
+    //여행 공유 화면 보이게 함
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
