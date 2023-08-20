@@ -67,6 +67,7 @@ class ReviewActivity : Fragment() {
             val rating = reviewBinding.rtbScore.rating //총 여행 별점 변수
             val rtbFood = reviewBinding.rtbFood.rating //총 음식 별점 변수
             val rtbActivity = reviewBinding.rtbActivity.rating //총 액티비티 별점 변수
+            ///ggvgvv
             val selectedMember = spMember.selectedItem.toString() //누구랑 변수
             val selectedHowmany = spHowmany.selectedItem.toString() //몇명 변수
             val selectedIntensity = spIntensity.selectedItem.toString() //여행강도 변수
