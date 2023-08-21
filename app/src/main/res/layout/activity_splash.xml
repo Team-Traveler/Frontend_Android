@@ -8,12 +8,17 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:layout_width="540dp"
-        android:layout_height="1003dp"
+        android:layout_width="527dp"
+        android:layout_height="888dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginRight="-10dp"
+        android:layout_marginBottom="-10dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/traveler_splash"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

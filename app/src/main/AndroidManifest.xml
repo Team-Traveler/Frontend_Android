@@ -78,10 +78,6 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                    <category android:name="android.intent.category.LAUNCHER" />
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <data android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" android:host="oauth"/>-->
                 <data android:host="oauth"
                     android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />
             </intent-filter>
@@ -101,7 +97,8 @@
             </intent-filter>
             <meta-data
                 android:name="com.kakao.sdk.AppKey"
-                android:value="851b99fc853c676b2b68b41b16ec7f48" />
+                android:value="851b99fc853c676b2b68b41b16ec7f48"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         </activity>
 
         <activity android:name=".SearchActivity"/>
