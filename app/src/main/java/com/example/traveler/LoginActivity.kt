@@ -4,14 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.traveler.retrofit.RetrofitAPI
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -50,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
             } else if (oAuthToken != null) {
                 Log.i(TAG, "로그인 성공(토큰) : " + oAuthToken.accessToken)
                 /** API 요청 실행  */
-                kakaoLoginAPI(oAuthToken.accessToken)
+//                kakaoLoginAPI(oAuthToken.accessToken)
             }
             null
         }
@@ -66,40 +61,10 @@ class LoginActivity : AppCompatActivity() {
             } else if (oAuthToken != null) {
                 Log.i(TAG, "로그인 성공(토큰) : " + oAuthToken.accessToken)
                 /** API 요청 수행  */
-                kakaoLoginAPI(oAuthToken.accessToken)
+//                kakaoLoginAPI(oAuthToken.accessToken)
+                startActivity(Intent(this@LoginActivity, NaviActivity::class.java))
             }
-            null
         }
     }
-    private fun kakaoLoginAPI(token: String) {
-        val authorizationCode = token
-        val requestBody = mapOf("authorizationCode" to authorizationCode)
 
-        val apiService = retrofit.create(RetrofitAPI::class.java)
-        val call = apiService.kakaoLogin(requestBody)
-        call.enqueue(object : Callback<KakaoLoginResponse> {
-            override fun onResponse(
-                call: Call<KakaoLoginResponse>,
-                response: Response<KakaoLoginResponse>
-            ) {
-                if (response.isSuccessful) {
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "로그인이 성공적으로 완료되었습니다.", Toast.LENGTH_SHORT
-                    ).show()
-                    Log.d("accountLogin()", "로그인이 성공적으로 완료되었습니다.")
-                    startActivity(Intent(this@LoginActivity, NaviActivity::class.java))
-                } else {
-                    val errorBody = response.errorBody()?.string()
-                    Log.d("accountLogin()", "카카오 로그인 실패 1")
-                    Log.d("accountLogin()", "Error Body: $errorBody")
-                    Log.d("accountLogin()", "Response Message: ${response.message()}")
-                    Log.d("accountLogin()", "authorization Code: $requestBody")
-                }
-            }
-            override fun onFailure(call: Call<KakaoLoginResponse?>, t: Throwable) {
-                Log.d("accountLogin()", "onFailure : " + t.message)
-            }
-        })
-    }
 }
