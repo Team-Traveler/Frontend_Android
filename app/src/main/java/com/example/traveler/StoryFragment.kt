@@ -1,6 +1,5 @@
 package com.example.traveler
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,9 +22,9 @@ class StoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnSearch.setOnClickListener {
-            val searchIntent = Intent(requireContext(), SearchActivity::class.java)
-            startActivity(searchIntent)
-        }
+//        binding.btnSearch.setOnClickListener {
+//            val searchIntent = Intent(requireContext(), SearchActivity::class.java)
+//            startActivity(searchIntent)
+//        }
     }
 }
