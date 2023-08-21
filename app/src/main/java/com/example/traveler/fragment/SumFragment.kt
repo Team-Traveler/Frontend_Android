@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.traveler.MainActivity
-import com.example.traveler.NaviActivity
 import com.example.traveler.R
 import com.example.traveler.databinding.FragmentSumBinding
+import com.example.traveler.dialog.BudgetDialog
 
-class SumFragment : Fragment() {
+class SumFragment : Fragment(), BudgetDialog.BudgetDialogListener {
     private lateinit var binding : FragmentSumBinding
     private var budgetValue: String = ""
 
@@ -21,21 +20,19 @@ class SumFragment : Fragment() {
         binding = FragmentSumBinding.inflate(inflater,container,false)
 
         val transaction = childFragmentManager.beginTransaction()
-            transaction.replace(R.id.framelayout_sum, SumGraphFragment())
-            transaction.disallowAddToBackStack()
-            transaction.commit()
+        transaction.replace(R.id.framelayout_sum, SumGraphFragment())
+        transaction.disallowAddToBackStack()
+        transaction.commit()
 
         binding.putBudget.setOnClickListener {
-            val transaction = (activity as NaviActivity).supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.frameLayout, BudgetFragment())
-            transaction.disallowAddToBackStack()
-            transaction.commit()
-            binding.putBudget.text = budgetValue  // 업데이트 추가
+            val budgetDialog = BudgetDialog(requireContext(), this)
+            budgetDialog.show()
         }
         return binding.root
     }
-    fun setBudget(budget: String) {
+    override fun onBudgetEntered(budget: String) {
+        // 예산 값을 받아서 UI 업데이트
         budgetValue = budget
-        binding.putBudget.text = budgetValue
+        binding.putBudget.text = budgetValue  // 예산을 표시하는 TextView의 ID에 맞게 변경해야 합니다.
     }
 }

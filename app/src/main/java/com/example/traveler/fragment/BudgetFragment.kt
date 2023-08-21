@@ -16,13 +16,13 @@ class BudgetFragment : Fragment() {
     ): View? {
         binding = FragmentBudgetBinding.inflate(inflater, container, false)
 
-        binding.budgetBtnOk.setOnClickListener {
-            val budgetAmount = binding.etBudget.text.toString()
-            val sumFragment = parentFragment as SumFragment
-            sumFragment.setBudget(budgetAmount)
-
-//            parentFragmentManager.popBackStack()
-        }
+//        binding.budgetBtnOk.setOnClickListener {
+//            val budgetAmount = binding.etBudget.text.toString()
+//            val sumFragment = parentFragment as SumFragment
+//            sumFragment.setBudget(budgetAmount)
+//
+////            parentFragmentManager.popBackStack()
+//        }
         return binding.root
     }
 }

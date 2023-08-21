@@ -10,8 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.ChecklistData
+import com.example.traveler.ExampleInterface
 import com.example.traveler.Interface.OuterDialogInterface
-import com.example.traveler.NewTitleData
+import com.example.traveler.RetrofitClass
 import com.example.traveler.adapter.InnerAdapter
 import com.example.traveler.adapter.OuterAdapter
 import com.example.traveler.databinding.FragmentCheckBinding
@@ -20,11 +21,11 @@ import com.example.traveler.model.InnerDto
 import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel
 import com.example.traveler.viewmodel.OuterViewModel
-import com.google.gson.Gson
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CheckFragment : Fragment(), OuterDialogInterface {
     private var binding: FragmentCheckBinding? = null
@@ -71,6 +72,28 @@ class CheckFragment : Fragment(), OuterDialogInterface {
         outerViewModel.addOuter(outer)
         Toast.makeText(activity,"카테고리 추가", Toast.LENGTH_SHORT).show()
     }
+
+    val schoolId = 10102
+    val grade = 2
+    val classroom = 4
+//    val callGetStudent = RetrofitClass.api.getStudent(schoolId, grade, classroom)
+
+//    callGetStudent.enqueue(object : Callback<ChecklistData> {
+//        override fun onResponse(call: Call<ChecklistData>, response: Response<ChecklistData>) {
+//            if(response.isSuccessful()) { // <--> response.code == 200
+//                // 성공 처리
+//
+//                //ex)
+//                Toast.makeText(this, "${response.body().student.size}", Toast.LENGTH_SHORT).show()
+//            } else { // code == 400
+//                // 실패 처리
+//            }
+//        }
+//
+//        override fun onFailure() { // code == 500
+//            // 실패 처리
+//        }
+//    }
 
 //    val checklist = ChecklistData(
 //        checklist= "새로운 체크리스트"

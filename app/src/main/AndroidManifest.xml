@@ -64,28 +64,46 @@
             android:name=".DetailActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
 
         <activity
-            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
-            android:exported="true">
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" android:host="oauth"/>
+                <!--                <data android:host="oauth"-->
+                <!--                    android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />-->
+            </intent-filter>
+        </activity>
 
-                   <category android:name="android.intent.category.LAUNCHER" />
+<!--        <activity-->
+<!--            android:name=".LoginActivity"-->
+<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
+<!--        </activity>-->
+
+<!--        <activity-->
+<!--            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.VIEW" />-->
 <!--                <category android:name="android.intent.category.DEFAULT" />-->
 <!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <data android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" android:host="oauth"/>-->
-                <data android:host="oauth"
-                    android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />
-            </intent-filter>
-        </activity>
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--                &lt;!&ndash;                <action android:name="android.intent.action.VIEW" />&ndash;&gt;-->
+<!--                &lt;!&ndash;                <category android:name="android.intent.category.DEFAULT" />&ndash;&gt;-->
+<!--                &lt;!&ndash;                <category android:name="android.intent.category.BROWSABLE" />&ndash;&gt;-->
+<!--                &lt;!&ndash;                <data android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" android:host="oauth"/>&ndash;&gt;-->
+<!--                <data android:host="oauth"-->
+<!--                    android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
         <activity
             android:name=".MakeActivity"
@@ -101,7 +119,7 @@
             </intent-filter>
             <meta-data
                 android:name="com.kakao.sdk.AppKey"
-                android:value="851b99fc853c676b2b68b41b16ec7f48" />
+                android:value="b6f86cf07bf7eb06fba747dc3761bc2a" />
         </activity>
 
         <activity android:name=".SearchActivity"/>
