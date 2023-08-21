@@ -4,11 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
+import com.kakao.sdk.user.UserApiClient
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+
 
 class LoginActivity : AppCompatActivity() {
     private val BASE_URL = "http://15.164.232.95:9000"
@@ -44,10 +53,7 @@ class LoginActivity : AppCompatActivity() {
                 Log.e(TAG, "로그인 실패", error)
             } else if (oAuthToken != null) {
                 Log.i(TAG, "로그인 성공(토큰) : " + oAuthToken.accessToken)
-                /** API 요청 실행  */
-//                kakaoLoginAPI(oAuthToken.accessToken)
             }
-            null
         }
     }
     // 없는 경우 직접 계정으로 로그인
@@ -60,8 +66,6 @@ class LoginActivity : AppCompatActivity() {
                 Log.e(TAG, "로그인 실패", error)
             } else if (oAuthToken != null) {
                 Log.i(TAG, "로그인 성공(토큰) : " + oAuthToken.accessToken)
-                /** API 요청 수행  */
-//                kakaoLoginAPI(oAuthToken.accessToken)
                 startActivity(Intent(this@LoginActivity, NaviActivity::class.java))
             }
         }

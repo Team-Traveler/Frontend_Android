@@ -4,8 +4,7 @@
     android:id="@+id/frameDay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.DayFragment"
-    android:background="@drawable/border_layout">
+    tools:context=".fragment.DayFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +20,7 @@
                 android:id="@+id/etCategoryTitle"
                 android:layout_width="362dp"
                 android:layout_height="37dp"
+                android:layout_weight="1"
                 android:background="@drawable/underline_background2"
                 android:text="일일 가계부"
                 android:textAlignment="center"
@@ -28,14 +28,14 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/editBtnCost"
-                android:layout_width="48dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/underline_background"
-                android:paddingBottom="0dp"
-                android:text="편집"
-                android:textColor="#707070" />
+<!--            <TextView-->
+<!--                android:id="@+id/editBtnCost"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/underline_background"-->
+<!--                android:paddingBottom="0dp"-->
+<!--                android:text="편집"-->
+<!--                android:textColor="#707070" />-->
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -44,14 +44,14 @@
             android:layout_height="400dp"
             tools:listitem="@layout/outer_cost_layout" />
 
-        <Button
-            android:id="@+id/addCostBtn"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:backgroundTint="#FBFBFB"
-            android:text="비용추가"
-            android:textColor="#404040"
-            android:textSize="10sp" />
+<!--                <Button-->
+<!--                    android:id="@+id/addCostBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="52dp"-->
+<!--                    android:backgroundTint="#FBFBFB"-->
+<!--                    android:text="비용추가"-->
+<!--                    android:textColor="#404040"-->
+<!--                    android:textSize="10sp" />-->
     </LinearLayout>
 
 </FrameLayout>
