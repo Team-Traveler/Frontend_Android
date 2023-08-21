@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/calendar_year_month_text"
-        android:layout_width="372dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="7월"
@@ -17,14 +17,45 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="지출합계"
-            android:textAlignment="center"
-            android:textColor="#404040"
-            android:textSize="10sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="393dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="61dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="132dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="지출합계"
+                android:textColor="#404040"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="61dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="196dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
     <View
         android:id="@+id/div"
         android:layout_width="match_parent"
