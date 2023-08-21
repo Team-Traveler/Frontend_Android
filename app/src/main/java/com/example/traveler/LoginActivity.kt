@@ -20,36 +20,36 @@ class LoginActivity : AppCompatActivity(){
         val button_login = findViewById<ImageButton>(R.id.button_login)
 
         button_login.setOnClickListener {
-//            startActivity(Intent(this, NaviActivity::class.java))
-            UserApiClient.instance.loginWithKakaoAccount(this) { token, error ->
-                if (error != null) {
-                    Log.e("test", "로그인 실패", error)
-                    Toast.makeText(this,"로그인 실패", Toast.LENGTH_SHORT).show()
-                } else if (token != null) {
-                    Log.i("test", "로그인 성공 ${token.accessToken}")
-                    Toast.makeText(this,"로그인 성공", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, NaviActivity::class.java)
-                    startActivity(intent)
-//                    startActivity(Intent(this, NaviActivity::class.java))
-                    // 카카오 로그인 성공 처리
-                    // 사용자 정보 요청
-                    UserApiClient.instance.me { user, error ->
-                        if (error != null) {
-                            // 사용자 정보 요청 실패 처리
-                        } else if (user != null) {
-                            // 사용자 정보 요청 성공 처리
-                            val userId = user.id
-                            val nickname = user.kakaoAccount?.profile?.nickname
-                            val profileImageUrl = user.kakaoAccount?.profile?.profileImageUrl
-                        }
-                    }
-                }
-                else if (token == null) {
-                    Toast.makeText(this, "토큰 없음", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, NaviActivity::class.java)
-                    startActivity(intent)
-                }
-            }
+            startActivity(Intent(this, NaviActivity::class.java))
+//            UserApiClient.instance.loginWithKakaoAccount(this) { token, error ->
+//                if (error != null) {
+//                    Log.e("test", "로그인 실패", error)
+//                    Toast.makeText(this,"로그인 실패", Toast.LENGTH_SHORT).show()
+//                } else if (token != null) {
+//                    Log.i("test", "로그인 성공 ${token.accessToken}")
+//                    Toast.makeText(this,"로그인 성공", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this, NaviActivity::class.java)
+//                    startActivity(intent)
+////                    startActivity(Intent(this, NaviActivity::class.java))
+//                    // 카카오 로그인 성공 처리
+//                    // 사용자 정보 요청
+//                    UserApiClient.instance.me { user, error ->
+//                        if (error != null) {
+//                            // 사용자 정보 요청 실패 처리
+//                        } else if (user != null) {
+//                            // 사용자 정보 요청 성공 처리
+//                            val userId = user.id
+//                            val nickname = user.kakaoAccount?.profile?.nickname
+//                            val profileImageUrl = user.kakaoAccount?.profile?.profileImageUrl
+//                        }
+//                    }
+//                }
+//                else if (token == null) {
+//                    Toast.makeText(this, "토큰 없음", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this, NaviActivity::class.java)
+//                    startActivity(intent)
+//                }
+//            }
         }
     }
 }

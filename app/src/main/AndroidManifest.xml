@@ -70,12 +70,12 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" android:host="oauth"/>
-<!--                <data android:host="oauth"-->
-<!--                    android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+<!--                <data android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" android:host="oauth"/>-->
+                <data android:host="oauth"
+                    android:scheme="kakaob6f86cf07bf7eb06fba747dc3761bc2a" />
             </intent-filter>
         </activity>
         <activity

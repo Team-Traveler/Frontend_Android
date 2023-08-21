@@ -112,16 +112,6 @@ class CalendarFragment(index: Int) : Fragment() {
                 val day = calendarAdapter.dataList[position].toString()
                 val date = "${calendar_year_month_text.text}${day}일"
                 Log.d(TAG, "$date")
-
-                // 이 부분에서 해당 날짜의 지출 정보를 가져와서 표시합니다.
-//                val matchingDayData = getDayDataForDate("$selectedYear/$selectedMonth/$selectedDate")
-//                if (matchingDayData != null) {
-//                    // 해당 날짜에 지출 정보가 있는 경우, 지출 내역을 표시하는 처리를 수행합니다.
-//                    // 예시로 로그에 출력하는 부분입니다.
-//                    for (costData in matchingDayData.costDataList) {
-//                        Log.d(TAG, "Date: $selectedYear/$selectedMonth/$selectedDate, Category: ${costData.category}, Item: ${costData.content}, Amount: ${costData.cost}")
-//                    }
-//                }
             }
         }
         calendar_view.adapter = calendarAdapter

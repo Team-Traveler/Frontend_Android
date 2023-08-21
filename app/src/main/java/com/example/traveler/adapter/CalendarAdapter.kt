@@ -83,33 +83,8 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
                 itemCalendarDotView.background = null
             }
 
-            // 날짜의 연월일 형식을 생성하여 지출 정보를 가져올 key로 사용합니다.
-            val selectedDate = "${SimpleDateFormat("yyyy-MM", Locale.KOREA).format(date)}-${data.toString().padStart(2, '0')}"
-
-//            // 이 부분에서 해당 날짜의 지출 정보를 가져와서 표시합니다.
-//            val matchingDayData = getDayDataForDate(selectedDate)
-//            if (matchingDayData != null) {
-//                // 해당 날짜에 지출 정보가 있는 경우, 지출 내역을 표시하는 처리를 수행합니다.
-//                // 예시로 TextView에 표시하는 부분입니다.
-//                var expenseText = ""
-//                for (costData in matchingDayData.costDataList) {
-//                    expenseText += "${costData.category} - ${costData.content} (${costData.cost})\n"
-//                }
-//                itemCalendarDotView.visibility = View.VISIBLE
-//                itemCalendarDateText.text = data.toString()
-//                itemCalendarExpenseText.text = expenseText
-//            } else {
-//                // 해당 날짜에 지출 정보가 없는 경우, dot만 표시합니다.
-//                itemCalendarDotView.visibility = View.GONE
-//                itemCalendarDateText.text = data.toString()
-//                itemCalendarExpenseText.text = ""
-//            }
         }
 
-        private fun getDayDataForDate(date: String): DayDto? {
-            // 날짜 형식과 일치하는 DayDto를 찾아서 반환하는 함수를 작성합니다.
-            return dayDataList.find { it.date == date }
-        }
 
     }
 }

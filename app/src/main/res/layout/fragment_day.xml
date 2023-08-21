@@ -44,14 +44,14 @@
             android:layout_height="400dp"
             tools:listitem="@layout/outer_cost_layout" />
 
-        <!--        <Button-->
-        <!--            android:id="@+id/addCostBtn"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="52dp"-->
-        <!--            android:backgroundTint="#FBFBFB"-->
-        <!--            android:text="비용추가"-->
-        <!--            android:textColor="#404040"-->
-        <!--            android:textSize="10sp" />-->
+<!--                <Button-->
+<!--                    android:id="@+id/addCostBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="52dp"-->
+<!--                    android:backgroundTint="#FBFBFB"-->
+<!--                    android:text="비용추가"-->
+<!--                    android:textColor="#404040"-->
+<!--                    android:textSize="10sp" />-->
     </LinearLayout>
 
 </FrameLayout>
