@@ -82,4 +82,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9' // Gson 버전은 최신 버전으로 대체할 수 있습니다.
     implementation 'com.squareup.okhttp3:okhttp:4.9.1' // OkHttp 버전은 최신 버전으로 대체할 수 있습니다.
     implementation "com.kakao.sdk:v2-user:2.15.0" // 카카오 로그인
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0" // Retrofit 라이브러리
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0" // ScalarsConverterFactory
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.8.0'
+
 }
