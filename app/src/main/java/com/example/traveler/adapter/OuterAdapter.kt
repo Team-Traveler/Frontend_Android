@@ -9,15 +9,21 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.traveler.Interface.OuterDialogInterface
+import com.example.traveler.NewTitleData
 import com.example.traveler.databinding.OuterItemLayoutBinding
 import com.example.traveler.dialog.InnerDialog
-
-
-import com.example.traveler.dialog.dialogInterface.OuterDialogInterface
 import com.example.traveler.model.InnerDto
 import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel
 import com.example.traveler.viewmodel.OuterViewModel
+import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewModel: InnerViewModel, private val outerViewModel: OuterViewModel) :
     RecyclerView.Adapter<OuterAdapter.OuterViewHolder>() {
@@ -120,4 +126,21 @@ class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewM
         outerList = outerData
         notifyDataSetChanged()
     }
+
+//    val newTitle = NewTitleData(
+//        newTitle = "새로운 체크리스트 제목"
+//    )
+//    val gson = Gson()
+//    val jsonData = gson.toJson(newTitle)
+//
+//    val client = OkHttpClient()
+//    val mediaType = "application/json".toMediaType()
+//    val body = "{\r\n  \"title\": \"새로운 체크리스트\"\r\n}".toRequestBody(mediaType)
+//    val request = Request.Builder()
+//        .url("http://15.164.232.95:9000/checklist/1")
+//        .post(body)
+//        .addHeader("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiZXhwIjoxNjg5Njk1NTE0fQ.mXTd2f1NwwTKygOxknRJTp-NnAinpE_w1IHAnGTDya-aWQuQDXT_E0a8i1NP4Qd8vRrkmdD9Nie41Mx4ruLb1w")
+//        .addHeader("Content-Type", "application/json")
+//        .build()
+//    val response = client.newCall(request).execute()
 }

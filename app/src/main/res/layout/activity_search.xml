@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,15 +48,30 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="30dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:outlineProvider="none">
 
-                <SearchView
-                    android:id="@+id/svSearch"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="검색어를 입력하세요" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgSearch2"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/search" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/svSearch2"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="검색어를 입력하세요" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -66,56 +82,68 @@
                         android:id="@+id/button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
                         android:layout_weight="1"
+                        android:backgroundTint="#B5B5B5"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
                         android:paddingLeft="2dp"
-                        android:paddingTop="4dp"
+                        android:paddingTop="8dp"
                         android:paddingRight="2dp"
-                        android:paddingBottom="4dp"
+                        android:paddingBottom="8dp"
                         android:text="#국내여행"
+                        android:textColor="#000000"
                         android:textSize="8sp" />
 
                     <Button
                         android:id="@+id/button2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
                         android:layout_weight="1"
+                        android:backgroundTint="#B5B5B5"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="4dp"
+                        android:paddingLeft="2dp"
+                        android:paddingTop="8dp"
+                        android:paddingRight="2dp"
+                        android:paddingBottom="8dp"
                         android:text="#벚꽃"
+                        android:textColor="#000000"
                         android:textSize="8sp" />
 
                     <Button
                         android:id="@+id/button3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
                         android:layout_weight="1"
+                        android:backgroundTint="#B5B5B5"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="4dp"
+                        android:paddingLeft="2dp"
+                        android:paddingTop="8dp"
+                        android:paddingRight="2dp"
+                        android:paddingBottom="8dp"
                         android:text="#바다서핑"
+                        android:textColor="#000000"
                         android:textSize="8sp" />
 
                     <Button
                         android:id="@+id/button5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
                         android:layout_weight="1"
+                        android:backgroundTint="#B5B5B5"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="4dp"
+                        android:paddingLeft="2dp"
+                        android:paddingTop="8dp"
+                        android:paddingRight="2dp"
+                        android:paddingBottom="8dp"
                         android:text="#등산"
+                        android:textColor="#000000"
                         android:textSize="8sp" />
 
                     <Button
@@ -123,13 +151,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="#B5B5B5"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="4dp"
+                        android:paddingLeft="2dp"
+                        android:paddingTop="8dp"
+                        android:paddingRight="2dp"
+                        android:paddingBottom="8dp"
                         android:text="#여름"
+                        android:textColor="#000000"
                         android:textSize="8sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -186,4 +216,5 @@
         </LinearLayout>
 
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.example.traveler.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.traveler.SumFragment
+import com.example.traveler.fragment.SumFragment
 import com.example.traveler.fragment.CheckFragment
 import com.example.traveler.fragment.DayFragment
 import com.example.traveler.fragment.MonthFragment
