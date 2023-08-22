@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.databinding.ActivityAddPlaceBinding
@@ -81,7 +80,7 @@ class AddPlaceActivity : AppCompatActivity() {
                     keywordList.add(0, query) // 검색한 내용 추가함
 
                     // 여기서 검색 결과를 childDataList에 추가
-                    childDataList.add(ChildData(childDataList.size + 1, query))
+                    childDataList.add(ChildData((childDataList.size + 1).toLong(), query))
                     adapter.notifyDataSetChanged()
                     // 검색어로 입력된 주소에 대한 위치 정보 얻기
                     val location = getLocationFromAddress(this@AddPlaceActivity,query)
@@ -138,7 +137,7 @@ class AddPlaceActivity : AppCompatActivity() {
             val query = binding.searchView.query.toString()
             if (!query.isNullOrBlank()) {
                 // 검색한 내용을 childDataList에 추가
-                childDataList.add(ChildData(childDataList.size + 1, query))
+                childDataList.add(ChildData((childDataList.size + 1).toLong(), query))
                 adapter.notifyDataSetChanged()
                 updateKeywordList()
                 searchview.setQuery("", false) // 검색창 지움
