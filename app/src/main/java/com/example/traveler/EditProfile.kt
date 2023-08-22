@@ -42,24 +42,24 @@ class EditProfile : AppCompatActivity() {
         // 이전 페이지로 돌아가기 위해 [수정버튼] 클릭 이벤트 처리
         binding.editbtn.setOnClickListener {
 
-//            val newNickname = binding.username.text.toString()
-//
-//            val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiZXhwIjoxNjg5Njk1NTE0fQ.mXTd2f1NwwTKygOxknRJTp-NnAinpE_w1IHAnGTDya-aWQuQDXT_E0a8i1NP4Qd8vRrkmdD9Nie41Mx4ruLb1w" // 본인의 인증 토큰으로 대체해야 합니다.
+            val newNickname = binding.username.text.toString()
 
-//            apiClient.updateNickname(newNickname, token) { isSuccess, errorMessage ->
-//                if (isSuccess) {
-//                    // 닉네임 수정 성공 처리
-//                    val resultIntent = Intent()
-//                    resultIntent.putExtra("name", newNickname)
-//                    setResult(Activity.RESULT_OK, resultIntent)
-//                    finish()
-//                } else {
-//                    // 에러 처리
-//                    if (errorMessage != null) {
-//                        Log.e("EditProfile", errorMessage)
-//                    }
-//                }
-//            }
+            val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiZXhwIjoxNjkyNjAzNzM2fQ.MWuELZR9q8sQBraC_wwflJ8i619mJ9qMremT3QYyMGLuVTU9II-R66tfdOAc5kqlClnxt3XRojsYQgfF2cob_Q" // 본인의 인증 토큰으로 대체해야 합니다.
+
+            apiClient.updateNickname(newNickname, token) { isSuccess, errorMessage ->
+                if (isSuccess) {
+                    // 닉네임 수정 성공 처리
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("name", newNickname)
+                    setResult(Activity.RESULT_OK, resultIntent)
+                    finish()
+                } else {
+                    // 에러 처리
+                    if (errorMessage != null) {
+                        Log.e("EditProfile", errorMessage)
+                    }
+                }
+            }
 
             val modifiedValue = username.text.toString()
 

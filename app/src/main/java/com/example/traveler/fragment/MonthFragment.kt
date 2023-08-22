@@ -65,14 +65,4 @@ class MonthFragment : Fragment() {
         super.onDestroy()
         instance = null
     }
-
-    fun updateData(data: Bundle) {
-        val category = data.getString("category")
-        val cost = data.getString("cost")
-
-        // 이 부분에서 해당 날짜에 대한 TextView를 찾아서 업데이트합니다.
-        val textViewId = R.id.item_calendar_expense_text // 텍스트뷰 아이디를 적절하게 수정
-        val textView = view?.findViewById<TextView>(textViewId)
-        textView?.text = "$category - $cost" // 예시로 카테고리와 비용을 표시
-    }
 }

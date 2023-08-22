@@ -3,12 +3,15 @@ package com.example.traveler.dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Spinner
 import android.widget.Toast
 import com.example.traveler.R
 import com.example.traveler.adapter.DayAdapter
+import com.example.traveler.model.DayDto
 import java.util.Date
 
 class CostDialog(context: Context, myInterface: DayAdapter.DayViewHolder) : Dialog(context){
@@ -16,6 +19,8 @@ class CostDialog(context: Context, myInterface: DayAdapter.DayViewHolder) : Dial
     private var costDialogInterface: DayAdapter.DayViewHolder = myInterface
 
     private var selectedCategory: String? = null
+
+    private val dayDataList = ArrayList<DayDto>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_dialog2)
@@ -25,6 +30,9 @@ class CostDialog(context: Context, myInterface: DayAdapter.DayViewHolder) : Dial
         var outerEditView2 : EditText = findViewById(R.id.editContent)
 //        var outerEditView3 : EditText = findViewById(R.id.outerEditView3)
         var outerEditView4 : EditText = findViewById(R.id.editCost)
+        val spinner: Spinner = findViewById(R.id.spinner1)
+
+        spinner.adapter = ArrayAdapter.createFromResource(context, R.array.spinner_day, android.R.layout.simple_spinner_item)
 
         val foodImgBtn: ImageButton = findViewById(R.id.foodImgBtn)
         val trafficImgBtn: ImageButton = findViewById(R.id.trafficImgBtn)
@@ -73,7 +81,8 @@ class CostDialog(context: Context, myInterface: DayAdapter.DayViewHolder) : Dial
                 Toast.makeText(context, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else if (selectedCategory == null) {
                 Toast.makeText(context, "카테고리를 선택해주세요.", Toast.LENGTH_SHORT).show()
-            } else if (cost.isEmpty()) {
+            }
+            else if (cost.isEmpty()) {
                 Toast.makeText(context, "비용을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
                 costDialogInterface.onOkButtonClicked(content, selectedCategory!!, cost)

@@ -15,6 +15,9 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
+    <style name="LightColorTextViewStyle" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
     <style name="CalendarDayTextViewStyle" parent="@style/Widget.AppCompat.TextView">
         <item name="android:textColor">@color/night_background</item>
     </style>

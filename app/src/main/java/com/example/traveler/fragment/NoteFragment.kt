@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager2.widget.ViewPager2
+import com.example.traveler.ChoiceFragment
+import com.example.traveler.R
 import com.example.traveler.databinding.FragmentNoteBinding
 import com.example.traveler.adapter.ViewPagerAdapter
 
@@ -25,7 +29,6 @@ class NoteFragment : Fragment() {
         // 3. View Pager의 Orientation 설정
         binding.vpCheck.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        // 5. return Fragment Layout View
         return binding.root
     }
 }
