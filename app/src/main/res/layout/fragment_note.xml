@@ -38,11 +38,12 @@
 
             <Button
                 android:id="@+id/btn_travel_choice"
-                android:layout_width="320dp"
+                android:layout_width="350dp"
                 android:layout_height="72dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#C5E0B4"
-                android:text="후쿠오카 여행"
+                android:text="부산 여행\n2박 3일 8/10~8/12"
+                android:textAlignment="viewStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

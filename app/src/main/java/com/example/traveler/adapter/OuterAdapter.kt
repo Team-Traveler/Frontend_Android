@@ -1,7 +1,7 @@
 package com.example.traveler.adapter
 
 import android.content.Context
-import android.content.Context.INPUT_METHOD_SERVICE
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,23 +10,27 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.Interface.OuterDialogInterface
-import com.example.traveler.NewTitleData
+import com.example.traveler.Interface.UpdateDialogInterface
 import com.example.traveler.databinding.OuterItemLayoutBinding
 import com.example.traveler.dialog.InnerDialog
+import com.example.traveler.dialog.UpdateDialog
 import com.example.traveler.model.InnerDto
 import com.example.traveler.model.OuterDto
 import com.example.traveler.viewmodel.InnerViewModel
 import com.example.traveler.viewmodel.OuterViewModel
-import com.google.gson.Gson
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.IOException
 
-class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewModel: InnerViewModel, private val outerViewModel: OuterViewModel) :
+class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewModel: InnerViewModel, private val outerViewModel: OuterViewModel,  private val uiUpdateListener: UiUpdateListener) :
     RecyclerView.Adapter<OuterAdapter.OuterViewHolder>() {
+
+    interface UiUpdateListener {
+        fun onUiUpdateSuccess(responseBody: String)
+        fun onUiUpdateFailure()
+    }
 
     inner class OuterViewHolder(
         val itemBinding: OuterItemLayoutBinding,
@@ -34,7 +38,7 @@ class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewM
     ) :
         RecyclerView.ViewHolder(itemBinding.root), OuterDialogInterface {
         private val innerList = ArrayList<InnerDto>()
-        private var innerAdapter: InnerAdapter = InnerAdapter(ArrayList(), innerViewModel)
+        private var innerAdapter: InnerAdapter = InnerAdapter(ArrayList(), innerViewModel, uiUpdateListener)
 
         fun bind(outer: OuterDto) {
             itemBinding.etCategoryTitle.setText(outer.title)
@@ -66,16 +70,80 @@ class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewM
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
                 true
             }
-            // 카테고리 제목 수정 버튼
+
             itemBinding.editImgBtn.setOnClickListener {
-                itemBinding.etCategoryTitle.requestFocus()
-                // 키보드를 자동으로 보이게 설정
-                val imm = it.context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+                val updateDialog = UpdateDialog(itemBinding.root.context, object :
+                    UpdateDialogInterface {
+                    override fun onOkButtonClicked(id: Int, title: String) {
+                        // 업데이트 버튼이 클릭되었을 때 처리 로직을 여기에 구현합니다.
+                        // newTitle 값에 변경된 제목이 전달됩니다.
+
+                        // 체크리스트 제목 변경 API 호출
+                        val client = OkHttpClient()
+                        val mediaType = "application/json".toMediaType()
+                        val body = "{\"newTitle\": \" 새로운 체크리스트 제목 \"}".toRequestBody(mediaType)
+                        val request = Request.Builder()
+                            .url("http://15.164.232.95:9000/checklist/111/title")
+                            .patch(body)
+                            .addHeader("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiZXhwIjoxNjg5Njk1NTE0fQ.mXTd2f1NwwTKygOxknRJTp-NnAinpE_w1IHAnGTDya-aWQuQDXT_E0a8i1NP4Qd8vRrkmdD9Nie41Mx4ruLb1w")
+                            .addHeader("Content-Type", "application/json")
+                            .build()
+
+                        client.newCall(request).enqueue(object : okhttp3.Callback {
+                            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                                if (response.isSuccessful) {
+                                    val responseBody = response.body?.string()
+                                    uiUpdateListener.onUiUpdateSuccess(responseBody ?: "")
+                                    // 업데이트 성공 시 카테고리 제목을 업데이트
+                                    val updatedOuter = outer.copy(title = title)
+                                    outerViewModel.updateOuter(updatedOuter)
+                                } else {
+                                    uiUpdateListener.onUiUpdateFailure()
+                                }
+                            }
+
+                            override fun onFailure(call: okhttp3.Call, e: IOException) {
+                                uiUpdateListener.onUiUpdateFailure()
+                                Log.e("OuterAdapter", "네트워크 오류")
+                                Toast.makeText(itemBinding.root.context, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                            }
+                        })
+                    }
+                })
+                updateDialog.show()
             }
+
             // 카테고리 전체삭제 버튼
             itemBinding.deleteCategoryBtn.setOnClickListener {
                 outerViewModel.deleteOuter(outer)
+
+                //카테고리 생성 api에서 생성되는 cid값을 삭제 api cid값으로 넣어주고 실행후 카테고리를 삭제하면 requestbody 잘 뜸.
+                val client = OkHttpClient()
+                val mediaType = "text/plain".toMediaType()
+                val body = "".toRequestBody(mediaType)
+                val request = Request.Builder()
+                    .url("http://15.164.232.95:9000/checklist/110")
+                    .method("DELETE", body)
+                    .addHeader("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiZXhwIjoxNjg5Njk1NTE0fQ.mXTd2f1NwwTKygOxknRJTp-NnAinpE_w1IHAnGTDya-aWQuQDXT_E0a8i1NP4Qd8vRrkmdD9Nie41Mx4ruLb1w")
+                    .build()
+
+                client.newCall(request).enqueue(object : okhttp3.Callback {
+                    override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                        if (response.isSuccessful) {
+                            val responseBody = response.body?.string()
+                            uiUpdateListener.onUiUpdateSuccess(responseBody ?: "")
+                        } else {
+                            uiUpdateListener.onUiUpdateFailure()
+                        }
+                    }
+
+                    override fun onFailure(call: okhttp3.Call, e: IOException) {
+                        uiUpdateListener.onUiUpdateFailure()
+                        Log.e("OuterAdapter", "네트워크 오류")
+                        Toast.makeText(itemView.context, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                    }
+                })
+
             }
         }
         // Fab 클릭시 다이얼로그 띄움
@@ -94,6 +162,32 @@ class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewM
 //            innerAdapter.notifyItemInserted(innerList.size - 1)
             innerAdapter.addInnerItem(inner)
             Toast.makeText(itemView.context,"추가", Toast.LENGTH_SHORT).show()
+
+            val client = OkHttpClient()
+            val mediaType = "text/plain".toMediaType()
+            val body = "".toRequestBody(mediaType)
+            val request = Request.Builder()
+                .url("http://15.164.232.95:9000/checklist/142/items")
+                .post(body)
+                .addHeader("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiZXhwIjoxNjg5Njk1NTE0fQ.mXTd2f1NwwTKygOxknRJTp-NnAinpE_w1IHAnGTDya-aWQuQDXT_E0a8i1NP4Qd8vRrkmdD9Nie41Mx4ruLb1w")
+                .build()
+
+            client.newCall(request).enqueue(object : okhttp3.Callback {
+                override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body?.string()
+                        uiUpdateListener.onUiUpdateSuccess(responseBody ?: "")
+                    } else {
+                        uiUpdateListener.onUiUpdateFailure()
+                    }
+                }
+
+                override fun onFailure(call: okhttp3.Call, e: IOException) {
+                    uiUpdateListener.onUiUpdateFailure()
+                    Log.e("OuterAdapter", "네트워크 오류")
+                    Toast.makeText(itemView.context, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
     }
     // RecyclerView.Adapter 상속 시 무조건 override 해야하는 fun - viewHolder에 layout inflate 하는 함수 (ViewBinding 사용)
@@ -126,21 +220,4 @@ class OuterAdapter(private var outerList: List<OuterDto>, private val innerViewM
         outerList = outerData
         notifyDataSetChanged()
     }
-
-//    val newTitle = NewTitleData(
-//        newTitle = "새로운 체크리스트 제목"
-//    )
-//    val gson = Gson()
-//    val jsonData = gson.toJson(newTitle)
-//
-//    val client = OkHttpClient()
-//    val mediaType = "application/json".toMediaType()
-//    val body = "{\r\n  \"title\": \"새로운 체크리스트\"\r\n}".toRequestBody(mediaType)
-//    val request = Request.Builder()
-//        .url("http://15.164.232.95:9000/checklist/1")
-//        .post(body)
-//        .addHeader("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiZXhwIjoxNjg5Njk1NTE0fQ.mXTd2f1NwwTKygOxknRJTp-NnAinpE_w1IHAnGTDya-aWQuQDXT_E0a8i1NP4Qd8vRrkmdD9Nie41Mx4ruLb1w")
-//        .addHeader("Content-Type", "application/json")
-//        .build()
-//    val response = client.newCall(request).execute()
 }

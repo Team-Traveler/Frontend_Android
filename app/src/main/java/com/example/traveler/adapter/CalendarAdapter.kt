@@ -64,7 +64,6 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
         var itemCalendarDateText: TextView = itemView!!.findViewById(R.id.item_calendar_date_text)
         var itemCalendarDotView: View = itemView!!.findViewById(R.id.item_calendar_dot_view)
-        var itemCalendarExpenseText: TextView = itemView!!.findViewById(R.id.item_calendar_expense_text)
 
         fun bind(data: Int, position: Int, context: Context) {
 //            Log.d(TAG, "${furangCalendar.prevTail}, ${furangCalendar.nextHead}")

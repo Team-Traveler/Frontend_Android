@@ -84,24 +84,4 @@ class SumGraphFragment : Fragment() {
         // 기타 막대 그래프 설정
         setupEmptyBarChart(binding.horizontalBarChart6)
     }
-
-    private fun setupHorizontalBarChart(chart: HorizontalBarChart, value: Float) {
-        val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(0f, value)) // x-index 0에 value 추가
-
-        val dataSet = BarDataSet(entries, "")
-        dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList() // 컬러 리스트 설정
-
-        val barData = BarData(dataSet)
-        barData.barWidth = 0.5f // 바 너비 설정
-
-        chart.data = barData
-        chart.description.isEnabled = false // 설명 비활성화
-        chart.legend.isEnabled = false // 범례 비활성화
-        chart.axisLeft.isEnabled = false // 왼쪽 축 비활성화
-        chart.axisRight.isEnabled = false // 오른쪽 축 비활성화
-        chart.xAxis.isEnabled = false // x축 비활성화
-        chart.setFitBars(true) // 바 차트의 너비를 맞춤
-        chart.invalidate()
-    }
 }

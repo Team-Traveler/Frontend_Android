@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         button_login.setOnClickListener {
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
-                login();
+                accountLogin();
             } else {
                 accountLogin();
             }

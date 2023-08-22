@@ -60,6 +60,9 @@ class DayFragment : Fragment() {
         val dayData2 = DayDto("2일차", "8월 11일")
         dayDataList.add(dayData2)
 
+        val dayData3 = DayDto("3일차", "8월 12일")
+        dayDataList.add(dayData3)
+
         dayAdapter.notifyDataSetChanged()
 
         return binding.root

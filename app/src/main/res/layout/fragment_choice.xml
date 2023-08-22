@@ -29,6 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#C5E0B4"
-            android:text="후쿠오카 여행" />
+            android:text="여행을 선택해주세요" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvChoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_layout" />
     </LinearLayout>
 </FrameLayout>
