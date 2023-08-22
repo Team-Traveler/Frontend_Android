@@ -102,6 +102,10 @@
         </activity>
 
         <activity android:name=".SearchActivity"/>
+
+        <activity android:name=".MakeplanActivity"/>
+        <activity android:name="CompletedplanActivity"/>
+        <activity android:name=".AllcontentsActivity"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.traveler
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,7 +22,7 @@ class RecommendFragment : Fragment() {
         val rootView = binding.root
 
         // 날짜 - 년도 옵션들
-        val spnYear = binding.spnYear
+        val spnYear = binding.spTheme
         spnYear.adapter = ArrayAdapter.createFromResource(
             rootView.context,
             com.example.traveler.R.array.year,
@@ -29,7 +30,7 @@ class RecommendFragment : Fragment() {
         )
 
         //날짜 - 월 옵션들
-        var spn = binding.spnMonth
+        var spn = binding.spMonth
         spn.adapter = ArrayAdapter.createFromResource(
             requireContext(),  // Use requireContext() here
             com.example.traveler.R.array.month,
@@ -37,22 +38,30 @@ class RecommendFragment : Fragment() {
         )
 
         //날짜 - 일 옵션들
-        spn = binding.spnDay
+        spn = binding.spDate
         spn.adapter = ArrayAdapter.createFromResource(
             requireContext(),  // Use requireContext() here
             com.example.traveler.R.array.day,
             android.R.layout.simple_spinner_item
         )
         //누구와 부분 고르기 옵션들
-        spn = binding.spnWhom
+        spn = binding.spMember
         spn.adapter = ArrayAdapter.createFromResource(
-            requireContext(),  // Use requireContext() here
+            requireContext(),
             com.example.traveler.R.array.withWhom,
             android.R.layout.simple_spinner_item
         )
 
+        //몇명
+        spn = binding.spHowmany
+        spn.adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            com.example.traveler.R.array.howMany,
+            android.R.layout.simple_spinner_item
+        )
+
         //무엇을 부분 고르기 옵션들
-        spn = binding.spnWhat
+        spn = binding.spWhat
         spn.adapter = ArrayAdapter.createFromResource(
             requireContext(),  // Use requireContext() here
             com.example.traveler.R.array.what,
@@ -60,7 +69,7 @@ class RecommendFragment : Fragment() {
         )
 
         //여행강도 부분 고르기 옵션들
-        spn = binding.spnIntensity
+        spn = binding.spIntensityPlan
         spn.adapter = ArrayAdapter.createFromResource(
             requireContext(),  // Use requireContext() here
             com.example.traveler.R.array.intensity,
@@ -71,9 +80,14 @@ class RecommendFragment : Fragment() {
 //        setSupportActionBar(toolbar)
 
         // Set up the toolbar
-        val toolbar = binding.toolbar
-        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        val toolbar = binding.toolbar
+//        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+//        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.btnDone.setOnClickListener {
+            val intent = Intent(requireContext(), MakeplanActivity::class.java)
+            startActivity(intent)
+        }
 
         return rootView
     }
