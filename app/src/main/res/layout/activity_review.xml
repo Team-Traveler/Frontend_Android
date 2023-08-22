@@ -471,7 +471,6 @@
                     android:layout_weight="1"
                     android:backgroundTint="#C5E0B4"
                     android:text="글쓰기"
-                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
 
                 <Button
@@ -483,7 +482,6 @@
                     android:layout_weight="1"
                     android:backgroundTint="#C5E0B4"
                     android:text="저장"
-                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
