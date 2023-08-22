@@ -7,33 +7,32 @@
         <item>기타</item>
     </string-array>
 
+    <string-array name="howMany">
+        <item>1명</item>
+        <item>2명</item>
+        <item>3명</item>
+        <item>4명</item>
+        <item>5명</item>
+        <item>6인 이상</item>
+
+    </string-array>
+
     <string-array name="what">
+        <item>드라이브</item>
+        <item>먹방</item>
+        <item>액티비티</item>
         <item>인스타 따라잡기</item>
-        <item>관광지 투어</item>
-        <item>휴양 하기</item>
+        <item>힐링</item>
+        <item>효도</item>
+        <item>허니문</item>
+        <item>워크샵</item>
+        <item>체험</item>
     </string-array>
 
     <string-array name="intensity">
         <item>느긋하게</item>
         <item>적당하게</item>
         <item>바쁘게</item>
-    </string-array>
-
-    <string-array name="menu">
-        <item>한식</item>
-        <item>중식</item>
-        <item>일식</item>
-        <item>기타</item>
-    </string-array>
-
-    <string-array name="drink">
-        <item>소주</item>
-        <item>맥주</item>
-        <item>와인</item>
-        <item>칵테일</item>
-        <item>전통주</item>
-        <item>기타</item>
-        <item>안마심</item>
     </string-array>
 
     <string-array name="year2">
